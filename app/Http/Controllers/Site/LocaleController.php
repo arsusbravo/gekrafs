@@ -14,6 +14,6 @@ class LocaleController extends Controller
 
         $request->session()->put('locale', $locale);
 
-        return redirect()->back(fallback: route('home'));
+        return redirect()->back(fallback: localized_route('home', locale: $locale));
     }
 }

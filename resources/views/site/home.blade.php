@@ -21,8 +21,8 @@
                 <p class="mt-6 max-w-xl text-lg leading-relaxed text-brand-100">{{ __("Empowering Indonesia's creative economy, from the Netherlands") }}.</p>
                 <p class="mt-2 font-semibold text-accent-400">#EkrafBangkitIndonesiaMaju</p>
                 <div class="mt-8 flex flex-wrap gap-3">
-                    <a href="{{ route('about') }}" class="btn btn-accent px-6 py-3 text-base">{{ __('Discover our work') }} <x-icon name="arrow-right" class="h-4 w-4" /></a>
-                    <a href="{{ route('events.index') }}" class="btn btn-ghost-light px-6 py-3 text-base">{{ __('Events') }}</a>
+                    <a href="{{ localized_route('about') }}" class="btn btn-accent px-6 py-3 text-base">{{ __('Discover our work') }} <x-icon name="arrow-right" class="h-4 w-4" /></a>
+                    <a href="{{ localized_route('events.index') }}" class="btn btn-ghost-light px-6 py-3 text-base">{{ __('Events') }}</a>
                 </div>
             </div>
             <div class="relative mx-auto w-full max-w-lg lg:max-w-none">
@@ -48,14 +48,14 @@
 
                 <div class="mt-8 grid gap-4 sm:grid-cols-3">
                     @foreach (['mission title' => 'flag', 'sectors title' => 'sparkles', 'vision title' => 'eye'] as $key => $icon)
-                        <a href="{{ route('about') }}#{{ \Illuminate\Support\Str::before($key, ' ') }}" class="group rounded-2xl bg-brand-50 p-4 transition hover:bg-brand-600 hover:text-white">
+                        <a href="{{ localized_route('about') }}#{{ \Illuminate\Support\Str::before($key, ' ') }}" class="group rounded-2xl bg-brand-50 p-4 transition hover:bg-brand-600 hover:text-white">
                             <x-icon :name="$icon" class="h-6 w-6 text-brand-600 group-hover:text-accent-400" />
                             <p class="mt-3 text-sm leading-snug font-bold">{{ __('organization.'.$key) }}</p>
                         </a>
                     @endforeach
                 </div>
 
-                <a href="{{ route('about') }}" class="btn btn-primary mt-8">{{ __('Learn more about us') }} <x-icon name="arrow-right" class="h-4 w-4" /></a>
+                <a href="{{ localized_route('about') }}" class="btn btn-primary mt-8">{{ __('Learn more about us') }} <x-icon name="arrow-right" class="h-4 w-4" /></a>
             </div>
         </div>
     </section>
@@ -63,7 +63,7 @@
     {{-- Latest news --}}
     <section class="bg-gray-50 py-20 sm:py-28">
         <div class="container-site">
-            <x-section-heading :eyebrow="__('News')" :title="__('Latest news')" :link="route('blog.index')" :link-label="__('View all')" />
+            <x-section-heading :eyebrow="__('News')" :title="__('Latest news')" :link="localized_route('blog.index')" :link-label="__('View all')" />
             @if ($posts->isEmpty())
                 <p class="text-gray-500">{{ __('No news published yet.') }}</p>
             @else
@@ -79,7 +79,7 @@
     {{-- Upcoming events --}}
     <section class="py-20 sm:py-28">
         <div class="container-site">
-            <x-section-heading :eyebrow="__('Events')" :title="__('Upcoming events')" :link="route('events.index')" :link-label="__('View all')" />
+            <x-section-heading :eyebrow="__('Events')" :title="__('Upcoming events')" :link="localized_route('events.index')" :link-label="__('View all')" />
             @if ($events->isEmpty())
                 <div class="rounded-2xl border-2 border-dashed border-gray-200 bg-gray-50 px-6 py-14 text-center">
                     <x-icon name="calendar" class="mx-auto h-10 w-10 text-brand-300" />
@@ -128,7 +128,7 @@
                     <div>
                         <h2 class="section-title">{{ __('Get in touch') }}</h2>
                         <p class="mt-4 max-w-lg text-brand-100">{{ __('Questions about GEKRAFS in the Netherlands? Our representatives are happy to help.') }}</p>
-                        <a href="{{ route('contact') }}" class="btn btn-accent mt-8 px-6 py-3">{{ __('Contact') }} <x-icon name="arrow-right" class="h-4 w-4" /></a>
+                        <a href="{{ localized_route('contact') }}" class="btn btn-accent mt-8 px-6 py-3">{{ __('Contact') }} <x-icon name="arrow-right" class="h-4 w-4" /></a>
                     </div>
                     <div class="lg:justify-self-end">
                         <p class="eyebrow text-accent-400">{{ __('Our partners') }}</p>

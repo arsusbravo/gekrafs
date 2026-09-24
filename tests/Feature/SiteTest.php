@@ -43,15 +43,54 @@ class SiteTest extends TestCase
         $this->get('/contact')->assertOk()->assertSee('Endang den Boer-Wahyuni');
     }
 
-    public function test_visitors_can_switch_language(): void
+    public function test_language_is_taken_from_the_url(): void
     {
-        $this->from('/about')->get('/language/nl')->assertRedirect('/about');
-        $this->get('/about')->assertSee('Missie en belangrijkste focus');
+        $this->get('/about')->assertOk()->assertSee('Mission and Main Focus');
+        $this->get('/nl/about')->assertOk()->assertSee('Missie en belangrijkste focus');
+        $this->get('/id')->assertOk()->assertSee('Acara mendatang');
 
-        $this->get('/language/id');
-        $this->get('/')->assertSee('Acara mendatang');
+        // English stays at the root, even after visiting a Dutch page.
+        $this->get('/nl');
+        $this->get('/about')->assertSee('Mission and Main Focus');
 
-        $this->get('/language/xx')->assertNotFound();
+        $this->get('/fr/about')->assertNotFound();
+    }
+
+    public function test_localized_detail_pages_and_links(): void
+    {
+        $event = Event::factory()->create(['starts_at' => now()->addWeek()]);
+        $post = Post::factory()->create();
+
+        $this->get("/nl/events/{$event->slug}")->assertOk()->assertSee('Wanneer');
+        $this->get("/id/blog/{$post->slug}")->assertOk();
+
+        // Links on a Dutch page stay in Dutch.
+        $this->get('/nl/events')
+            ->assertSee('href="'.url("/nl/events/{$event->slug}").'"', false)
+            ->assertSee('href="'.url('/nl/blog').'"', false)
+            ->assertDontSee('href="'.url('/blog').'"', false);
+    }
+
+    public function test_language_switcher_links_to_the_same_page(): void
+    {
+        $event = Event::factory()->create();
+
+        $this->get("/nl/events/{$event->slug}")
+            ->assertSee('href="'.url("/events/{$event->slug}").'"', false)
+            ->assertSee('href="'.url("/id/events/{$event->slug}").'"', false)
+            ->assertSee('hreflang="x-default" href="'.url("/events/{$event->slug}").'"', false);
+
+        // Pagination keeps its query string in the other language.
+        $this->get('/nl/blog?page=2')->assertSee('href="'.url('/id/blog?page=2').'"', false);
+    }
+
+    public function test_login_page_follows_the_last_visited_language(): void
+    {
+        $this->get('/id');
+        $this->get('/login')->assertSee('Kata sandi');
+
+        $this->from('/login')->get('/language/nl')->assertRedirect('/login');
+        $this->get('/login')->assertSee('Wachtwoord');
     }
 
     public function test_seeders_create_events_and_their_reports(): void

@@ -5,7 +5,7 @@
         @endif
         <div class="absolute inset-0 bg-linear-to-t from-brand-950 via-brand-950/80 to-brand-900/40"></div>
         <div class="container-site relative pt-12 pb-16 sm:pt-16 sm:pb-20">
-            <a href="{{ route('events.index') }}" class="inline-flex items-center gap-2 text-sm font-semibold text-brand-200 hover:text-white">
+            <a href="{{ localized_route('events.index') }}" class="inline-flex items-center gap-2 text-sm font-semibold text-brand-200 hover:text-white">
                 <x-icon name="arrow-left" class="h-4 w-4" /> {{ __('All events') }}
             </a>
             <h1 class="mt-6 max-w-4xl font-display text-6xl leading-none tracking-wide sm:text-7xl">{{ $event->title }}</h1>

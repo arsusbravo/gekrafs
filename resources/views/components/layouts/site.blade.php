@@ -20,12 +20,18 @@
     <title>{{ $title ? $title.' · ' : '' }}GEKRAFS {{ __('The Netherlands') }}</title>
     <meta name="description" content="{{ __('organization.gekrafs definition') }}">
     <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
+    @if (\App\Support\Localization::localeOf(request()->route()))
+        @foreach ($locales as $code => $name)
+            <link rel="alternate" hreflang="{{ $code }}" href="{{ current_url_in_locale($code) }}">
+        @endforeach
+        <link rel="alternate" hreflang="x-default" href="{{ current_url_in_locale(\App\Support\Localization::default()) }}">
+    @endif
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="flex min-h-full flex-col overflow-x-clip bg-white font-sans text-gray-900 antialiased">
     <header class="sticky top-0 z-40 border-b border-gray-100 bg-white/90 backdrop-blur">
         <div class="container-site flex h-20 items-center justify-between gap-6">
-            <a href="{{ route('home') }}" class="flex shrink-0 items-center gap-3">
+            <a href="{{ localized_route('home') }}" class="flex shrink-0 items-center gap-3">
                 <img src="{{ asset('images/logo.png') }}" alt="GEKRAFS" class="h-12 w-12">
                 <span class="leading-none">
                     <span class="block font-display text-3xl tracking-wider text-brand-800">Gekrafs</span>
@@ -35,11 +41,11 @@
 
             <nav class="hidden items-center gap-1 lg:flex">
                 @foreach ($links as $link)
-                    <a href="{{ route($link['route']) }}"
+                    <a href="{{ localized_route($link['route']) }}"
                        @class([
                            'rounded-full px-4 py-2 text-sm font-semibold transition',
-                           'bg-brand-50 text-brand-700' => request()->routeIs($link['active']),
-                           'text-gray-600 hover:bg-gray-50 hover:text-gray-900' => ! request()->routeIs($link['active']),
+                           'bg-brand-50 text-brand-700' => localized_route_is($link['active']),
+                           'text-gray-600 hover:bg-gray-50 hover:text-gray-900' => ! localized_route_is($link['active']),
                        ])>{{ $link['label'] }}</a>
                 @endforeach
             </nav>
@@ -70,17 +76,17 @@
         <div id="mobile-menu" class="hidden border-t border-gray-100 bg-white lg:hidden" data-menu>
             <div class="container-site space-y-1 py-4">
                 @foreach ($links as $link)
-                    <a href="{{ route($link['route']) }}"
+                    <a href="{{ localized_route($link['route']) }}"
                        @class([
                            'block rounded-lg px-3 py-2.5 text-base font-semibold',
-                           'bg-brand-50 text-brand-700' => request()->routeIs($link['active']),
-                           'text-gray-700 hover:bg-gray-50' => ! request()->routeIs($link['active']),
+                           'bg-brand-50 text-brand-700' => localized_route_is($link['active']),
+                           'text-gray-700 hover:bg-gray-50' => ! localized_route_is($link['active']),
                        ])>{{ $link['label'] }}</a>
                 @endforeach
 
                 <div class="flex items-center gap-2 px-3 pt-3">
                     @foreach ($locales as $code => $name)
-                        <a href="{{ route('locale', $code) }}" @class(['flex items-center gap-2 rounded-full border px-3 py-1.5 text-sm font-medium', 'border-brand-600 bg-brand-50 text-brand-700' => $code === $locale, 'border-gray-200 text-gray-600' => $code !== $locale])>
+                        <a href="{{ current_url_in_locale($code) }}" @class(['flex items-center gap-2 rounded-full border px-3 py-1.5 text-sm font-medium', 'border-brand-600 bg-brand-50 text-brand-700' => $code === $locale, 'border-gray-200 text-gray-600' => $code !== $locale])>
                             <img src="{{ asset('images/'.$code.'.png') }}" alt="" class="h-5 w-5 rounded-full">
                             {{ strtoupper($code) }}
                         </a>

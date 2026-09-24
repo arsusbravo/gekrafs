@@ -8,19 +8,32 @@ use App\Http\Controllers\Site\HomeController;
 use App\Http\Controllers\Site\LocaleController;
 use App\Http\Controllers\Site\PageController;
 use App\Http\Controllers\Site\PostController;
+use App\Support\Localization;
 use Illuminate\Support\Facades\Route;
 
 /*
-| Public website (Blade)
+| Public website (Blade), in every language: English at the root (/events),
+| other languages under their code (/nl/events, /id/events). Route names follow
+| the same pattern: "events.index", "nl.events.index", "id.events.index".
 */
-Route::get('/', HomeController::class)->name('home');
-Route::get('/about', [PageController::class, 'about'])->name('about');
-Route::get('/contact', [PageController::class, 'contact'])->name('contact');
+$publicRoutes = function () {
+    Route::get('/', HomeController::class)->name('home');
+    Route::get('/about', [PageController::class, 'about'])->name('about');
+    Route::get('/contact', [PageController::class, 'contact'])->name('contact');
+    Route::get('/events', [EventController::class, 'index'])->name('events.index');
+    Route::get('/events/{event}', [EventController::class, 'show'])->name('events.show');
+    Route::get('/blog', [PostController::class, 'index'])->name('blog.index');
+    Route::get('/blog/{post}', [PostController::class, 'show'])->name('blog.show');
+};
+
+foreach (Localization::locales() as $locale) {
+    $locale === Localization::default()
+        ? Route::group(['locale' => $locale], $publicRoutes)
+        : Route::group(['locale' => $locale, 'prefix' => $locale, 'as' => "{$locale}."], $publicRoutes);
+}
+
+// Language choice for pages without a language in the URL (login).
 Route::get('/language/{locale}', LocaleController::class)->name('locale');
-Route::get('/events', [EventController::class, 'index'])->name('events.index');
-Route::get('/events/{event}', [EventController::class, 'show'])->name('events.show');
-Route::get('/blog', [PostController::class, 'index'])->name('blog.index');
-Route::get('/blog/{post}', [PostController::class, 'show'])->name('blog.show');
 
 /*
 | Authentication

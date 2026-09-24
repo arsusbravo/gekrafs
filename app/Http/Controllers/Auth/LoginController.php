@@ -44,7 +44,7 @@ class LoginController extends Controller
         RateLimiter::clear($throttleKey);
         $request->session()->regenerate();
 
-        $default = $request->user()->is_admin ? '/admin' : route('home');
+        $default = $request->user()->is_admin ? '/admin' : localized_route('home');
 
         return redirect()->intended($default);
     }
@@ -56,6 +56,6 @@ class LoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('home');
+        return redirect(localized_route('home'));
     }
 }

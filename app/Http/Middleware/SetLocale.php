@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Support\Localization;
 use Carbon\Carbon;
 use Closure;
 use Illuminate\Http\Request;
@@ -10,12 +11,22 @@ use Symfony\Component\HttpFoundation\Response;
 
 class SetLocale
 {
+    /**
+     * Public pages take their language from the URL (/nl/..., /id/..., English at the root).
+     * Other pages (login) use the language of the last public page visited.
+     */
     public function handle(Request $request, Closure $next): Response
     {
-        $locale = $request->session()->get('locale');
+        $locale = Localization::localeOf($request->route());
 
-        if (! array_key_exists($locale ?? '', config('app.locales'))) {
-            $locale = config('app.locale');
+        if ($locale !== null) {
+            $request->session()->put('locale', $locale);
+        } else {
+            $locale = $request->session()->get('locale');
+        }
+
+        if (! Localization::supports($locale)) {
+            $locale = Localization::default();
         }
 
         App::setLocale($locale);

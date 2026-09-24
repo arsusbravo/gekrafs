@@ -5,7 +5,7 @@
 
     <div class="container-site grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-12">
         <div class="lg:col-span-4">
-            <a href="{{ route('home') }}" class="flex items-center gap-3">
+            <a href="{{ localized_route('home') }}" class="flex items-center gap-3">
                 <img src="{{ asset('images/logo.png') }}" alt="GEKRAFS" class="h-16 w-16">
                 <span class="leading-none">
                     <span class="block font-display text-4xl tracking-wider text-white">Gekrafs</span>
@@ -27,7 +27,7 @@
             <h3 class="font-display text-2xl tracking-wide text-white">{{ __('Pages') }}</h3>
             <ul class="mt-4 space-y-2 text-sm">
                 @foreach ($links as $link)
-                    <li><a href="{{ route($link['route']) }}" class="hover:text-white">{{ $link['label'] }}</a></li>
+                    <li><a href="{{ localized_route($link['route']) }}" class="hover:text-white">{{ $link['label'] }}</a></li>
                 @endforeach
             </ul>
         </div>

@@ -28,7 +28,7 @@
                 <ul class="divide-y divide-gray-100 overflow-hidden rounded-2xl bg-white ring-1 ring-gray-200">
                     @foreach ($past as $event)
                         <li>
-                            <a href="{{ route('events.show', $event) }}" class="group flex items-center gap-5 px-5 py-4 transition hover:bg-brand-50">
+                            <a href="{{ localized_route('events.show', $event) }}" class="group flex items-center gap-5 px-5 py-4 transition hover:bg-brand-50">
                                 <div class="w-16 shrink-0 text-center">
                                     <div class="font-display text-3xl leading-none text-gray-400 group-hover:text-brand-600">{{ $event->starts_at->format('d') }}</div>
                                     <div class="text-[11px] font-bold tracking-wider text-gray-400 uppercase">{{ $event->starts_at->translatedFormat('M Y') }}</div>

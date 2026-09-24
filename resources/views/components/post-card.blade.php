@@ -1,6 +1,6 @@
 @props(['post'])
 
-<a href="{{ route('blog.show', $post) }}" class="group flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-gray-200 transition hover:-translate-y-1 hover:shadow-xl hover:ring-brand-200">
+<a href="{{ localized_route('blog.show', $post) }}" class="group flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-gray-200 transition hover:-translate-y-1 hover:shadow-xl hover:ring-brand-200">
     @if ($post->image_url)
         <img src="{{ $post->image_url }}" alt="" class="aspect-[16/10] w-full object-cover">
     @else

@@ -3,7 +3,7 @@
         <header class="bg-pattern relative overflow-hidden text-white">
             <div class="absolute inset-0 bg-linear-to-br from-brand-950/90 to-brand-800/60"></div>
             <div class="container-site relative max-w-4xl pt-12 pb-28 text-center sm:pt-16">
-                <a href="{{ route('blog.index') }}" class="inline-flex items-center gap-2 text-sm font-semibold text-brand-200 hover:text-white">
+                <a href="{{ localized_route('blog.index') }}" class="inline-flex items-center gap-2 text-sm font-semibold text-brand-200 hover:text-white">
                     <x-icon name="arrow-left" class="h-4 w-4" /> {{ __('All news') }}
                 </a>
                 <p class="mt-6 text-sm font-semibold tracking-wide text-accent-400 uppercase">
@@ -28,7 +28,7 @@
                 <div class="prose-gekrafs">{!! $post->body_html !!}</div>
 
                 @if ($post->event)
-                    <a href="{{ route('events.show', $post->event) }}" class="group mt-12 flex items-center gap-5 rounded-2xl bg-brand-950 p-5 text-white transition hover:bg-brand-900">
+                    <a href="{{ localized_route('events.show', $post->event) }}" class="group mt-12 flex items-center gap-5 rounded-2xl bg-brand-950 p-5 text-white transition hover:bg-brand-900">
                         <div class="w-16 shrink-0 rounded-xl bg-white py-2 text-center">
                             <div class="font-display text-3xl leading-none text-brand-700">{{ $post->event->starts_at->format('d') }}</div>
                             <div class="text-[11px] font-bold tracking-wider text-gray-500 uppercase">{{ $post->event->starts_at->translatedFormat('M Y') }}</div>
