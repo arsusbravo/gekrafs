@@ -81,4 +81,17 @@ class SiteTest extends TestCase
         $this->get('/events/'.$event->slug)->assertSee('Gala Night Report')->assertDontSee('Draft Report');
         $this->get('/blog/'.$report->slug)->assertSee('Gala Night')->assertSee('/events/'.$event->slug, false);
     }
+
+    public function test_image_urls_are_relative_to_the_current_host(): void
+    {
+        // Uploads are served from public/uploads, independent of APP_URL (http/https or another domain).
+        config(['app.url' => 'http://some-other-host.test']);
+
+        $event = Event::factory()->create(['image' => 'events/cover.jpg']);
+        $post = Post::factory()->create(['image' => 'posts/cover.jpg']);
+
+        $this->assertSame('/uploads/events/cover.jpg', $event->image_url);
+        $this->assertSame('/uploads/posts/cover.jpg', $post->image_url);
+        $this->get('/events/'.$event->slug)->assertSee('src="/uploads/events/cover.jpg"', false);
+    }
 }

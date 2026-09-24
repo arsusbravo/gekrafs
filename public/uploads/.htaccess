@@ -1,0 +1,8 @@
+# Uploaded files are only ever served as static files: never run scripts from this folder.
+# Uses the same directives as public/.htaccess, so it works wherever Laravel itself works.
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule \.(php[0-9]?|phtml|phar)$ - [F,L,NC]
+</IfModule>

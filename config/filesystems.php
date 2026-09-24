@@ -40,10 +40,10 @@ return [
 
         'public' => [
             'driver' => 'local',
-            // Hosts that block symlinks (403 on /storage/...) can set PUBLIC_DISK_IN_WEBROOT=true
-            // to keep public files in a real public/storage folder instead of linking to it.
-            'root' => env('PUBLIC_DISK_IN_WEBROOT', false) ? public_path('storage') : storage_path('app/public'),
-            'url' => rtrim(env('APP_URL', 'http://localhost'), '/').'/storage',
+            // Uploads live in a real folder inside the web root: no storage:link symlink needed
+            // (Plesk blocks those), and relative URLs follow the current host and scheme.
+            'root' => public_path('uploads'),
+            'url' => '/uploads',
             'visibility' => 'public',
             'throw' => false,
             'report' => false,
@@ -75,8 +75,6 @@ return [
     |
     */
 
-    'links' => env('PUBLIC_DISK_IN_WEBROOT', false) ? [] : [
-        public_path('storage') => storage_path('app/public'),
-    ],
+    'links' => [],
 
 ];
