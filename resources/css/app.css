@@ -1,0 +1,96 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../js/**/*.vue';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-display: 'Bebas Neue', 'Impact', ui-sans-serif, sans-serif;
+
+    /* GEKRAFS electric blue, taken from the brand pattern and logo */
+    --color-brand-50: #eef3ff;
+    --color-brand-100: #dce6ff;
+    --color-brand-200: #bed0ff;
+    --color-brand-300: #91b0ff;
+    --color-brand-400: #5d87ff;
+    --color-brand-500: #3461ff;
+    --color-brand-600: #1f45f2;
+    --color-brand-700: #1834d4;
+    --color-brand-800: #1a2eab;
+    --color-brand-900: #1b2c86;
+    --color-brand-950: #111a4f;
+
+    /* Logo yellow accent */
+    --color-accent-300: #ffe27a;
+    --color-accent-400: #ffd43b;
+    --color-accent-500: #fcc419;
+    --color-accent-600: #e0a800;
+
+    /* Logo sky blue */
+    --color-sky-brand: #3fa9f5;
+}
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+@layer components {
+    .btn {
+        @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+    }
+    .btn-primary {
+        @apply bg-brand-600 text-white hover:bg-brand-700;
+    }
+    .btn-accent {
+        @apply bg-accent-500 text-brand-950 hover:bg-accent-400;
+    }
+    .btn-secondary {
+        @apply border border-gray-300 bg-white text-gray-700 hover:bg-gray-50;
+    }
+    .btn-ghost-light {
+        @apply border border-white/40 text-white hover:bg-white/10;
+    }
+    .btn-danger {
+        @apply bg-red-600 text-white hover:bg-red-700;
+    }
+    .form-label {
+        @apply mb-1 block text-sm font-medium text-gray-700;
+    }
+    .form-input {
+        @apply block w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 shadow-xs placeholder:text-gray-400 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 focus:outline-none;
+    }
+    .form-error {
+        @apply mt-1 text-sm text-red-600;
+    }
+    /* Rich text from the admin editor, on the website and inside the editor itself */
+    .prose-gekrafs {
+        @apply prose prose-lg max-w-none prose-gray prose-headings:font-display prose-headings:font-normal prose-headings:tracking-wide prose-headings:text-brand-950 prose-h2:text-4xl prose-h3:text-3xl prose-a:font-semibold prose-a:text-brand-600 hover:prose-a:text-brand-800 prose-blockquote:border-accent-500 prose-blockquote:font-medium prose-blockquote:text-brand-900 prose-strong:text-gray-900 prose-li:my-1 prose-li:marker:text-brand-500;
+    }
+    .prose-gekrafs-editor {
+        @apply prose max-w-none prose-gray prose-headings:font-display prose-headings:font-normal prose-headings:tracking-wide prose-headings:text-brand-950 prose-a:text-brand-600 prose-blockquote:border-accent-500 prose-li:my-0.5;
+    }
+
+    /* Public site */
+    .bg-pattern {
+        background-color: var(--color-brand-600);
+        background-image: url('../images/bg-pattern.jpg');
+        background-repeat: repeat;
+    }
+    .eyebrow {
+        @apply inline-flex items-center gap-2 text-xs font-bold tracking-[0.2em] uppercase;
+    }
+    .section-title {
+        @apply font-display text-5xl leading-none tracking-wide sm:text-6xl;
+    }
+    .container-site {
+        @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+    }
+    .photo-frame {
+        @apply rounded-2xl object-cover shadow-xl ring-4 ring-white;
+    }
+}

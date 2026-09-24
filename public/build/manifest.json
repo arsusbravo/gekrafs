@@ -1,0 +1,215 @@
+{
+  "_FormField-BkfeeLOO.js": {
+    "file": "assets/FormField-BkfeeLOO.js",
+    "name": "FormField",
+    "imports": [
+      "resources/js/admin/main.js"
+    ]
+  },
+  "_RichTextEditor-CPxrrope.js": {
+    "file": "assets/RichTextEditor-CPxrrope.js",
+    "name": "RichTextEditor",
+    "imports": [
+      "resources/js/admin/main.js"
+    ],
+    "css": [
+      "assets/RichTextEditor-D8uodeOL.css"
+    ]
+  },
+  "_RichTextEditor-D8uodeOL.css": {
+    "file": "assets/RichTextEditor-D8uodeOL.css",
+    "src": "_RichTextEditor-D8uodeOL.css"
+  },
+  "_StatusBadge-D0llGnbP.js": {
+    "file": "assets/StatusBadge-D0llGnbP.js",
+    "name": "StatusBadge",
+    "imports": [
+      "resources/js/admin/main.js"
+    ]
+  },
+  "_bebas-neue-400-normal-9mHNbWWO.woff2": {
+    "file": "assets/bebas-neue-400-normal-9mHNbWWO.woff2",
+    "src": "_bebas-neue-400-normal-9mHNbWWO.woff2"
+  },
+  "_bebas-neue-400-normal-Bi-ndsyu.woff": {
+    "file": "assets/bebas-neue-400-normal-Bi-ndsyu.woff",
+    "src": "_bebas-neue-400-normal-Bi-ndsyu.woff"
+  },
+  "_fonts-D2WQ2IyP.css": {
+    "file": "assets/fonts-D2WQ2IyP.css",
+    "src": "_fonts-D2WQ2IyP.css"
+  },
+  "_instrument-sans-400-normal-D1W7dsQl.woff": {
+    "file": "assets/instrument-sans-400-normal-D1W7dsQl.woff",
+    "src": "_instrument-sans-400-normal-D1W7dsQl.woff"
+  },
+  "_instrument-sans-400-normal-DRC__1Mx.woff2": {
+    "file": "assets/instrument-sans-400-normal-DRC__1Mx.woff2",
+    "src": "_instrument-sans-400-normal-DRC__1Mx.woff2"
+  },
+  "_instrument-sans-500-normal-Dk9ku72i.woff2": {
+    "file": "assets/instrument-sans-500-normal-Dk9ku72i.woff2",
+    "src": "_instrument-sans-500-normal-Dk9ku72i.woff2"
+  },
+  "_instrument-sans-500-normal-Z6ESRlEs.woff": {
+    "file": "assets/instrument-sans-500-normal-Z6ESRlEs.woff",
+    "src": "_instrument-sans-500-normal-Z6ESRlEs.woff"
+  },
+  "_instrument-sans-600-normal-B7fBEWYG.woff2": {
+    "file": "assets/instrument-sans-600-normal-B7fBEWYG.woff2",
+    "src": "_instrument-sans-600-normal-B7fBEWYG.woff2"
+  },
+  "_instrument-sans-600-normal-B9e8oLYv.woff": {
+    "file": "assets/instrument-sans-600-normal-B9e8oLYv.woff",
+    "src": "_instrument-sans-600-normal-B9e8oLYv.woff"
+  },
+  "_instrument-sans-700-normal-CYfAanHo.woff2": {
+    "file": "assets/instrument-sans-700-normal-CYfAanHo.woff2",
+    "src": "_instrument-sans-700-normal-CYfAanHo.woff2"
+  },
+  "_instrument-sans-700-normal-DfAjL1vF.woff": {
+    "file": "assets/instrument-sans-700-normal-DfAjL1vF.woff",
+    "src": "_instrument-sans-700-normal-DfAjL1vF.woff"
+  },
+  "_useResourceList-Rzo4E-XG.js": {
+    "file": "assets/useResourceList-Rzo4E-XG.js",
+    "name": "useResourceList",
+    "imports": [
+      "_utils-pRno_clU.js",
+      "resources/js/admin/main.js"
+    ]
+  },
+  "_utils-pRno_clU.js": {
+    "file": "assets/utils-pRno_clU.js",
+    "name": "utils"
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-ac4AK2wk.css",
+    "name": "app",
+    "names": [
+      "app.css"
+    ],
+    "src": "resources/css/app.css",
+    "isEntry": true,
+    "assets": [
+      "assets/bg-pattern-Bhp3EVPW.jpg"
+    ]
+  },
+  "resources/images/bg-pattern.jpg": {
+    "file": "assets/bg-pattern-Bhp3EVPW.jpg",
+    "src": "resources/images/bg-pattern.jpg"
+  },
+  "resources/js/admin/main.js": {
+    "file": "assets/main-BMg7sns_.js",
+    "name": "main",
+    "src": "resources/js/admin/main.js",
+    "isEntry": true,
+    "dynamicImports": [
+      "resources/js/admin/pages/Dashboard.vue",
+      "resources/js/admin/pages/events/EventIndex.vue",
+      "resources/js/admin/pages/events/EventForm.vue",
+      "resources/js/admin/pages/posts/PostIndex.vue",
+      "resources/js/admin/pages/posts/PostForm.vue",
+      "resources/js/admin/pages/users/UserIndex.vue",
+      "resources/js/admin/pages/users/UserForm.vue",
+      "resources/js/admin/pages/NotFound.vue"
+    ]
+  },
+  "resources/js/admin/pages/Dashboard.vue": {
+    "file": "assets/Dashboard-Cw4ZHIl3.js",
+    "name": "Dashboard",
+    "src": "resources/js/admin/pages/Dashboard.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_utils-pRno_clU.js",
+      "resources/js/admin/main.js",
+      "_StatusBadge-D0llGnbP.js"
+    ]
+  },
+  "resources/js/admin/pages/NotFound.vue": {
+    "file": "assets/NotFound-CfXTDIwM.js",
+    "name": "NotFound",
+    "src": "resources/js/admin/pages/NotFound.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/admin/main.js"
+    ]
+  },
+  "resources/js/admin/pages/events/EventForm.vue": {
+    "file": "assets/EventForm-DXi0S2pi.js",
+    "name": "EventForm",
+    "src": "resources/js/admin/pages/events/EventForm.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_utils-pRno_clU.js",
+      "resources/js/admin/main.js",
+      "_FormField-BkfeeLOO.js",
+      "_RichTextEditor-CPxrrope.js"
+    ]
+  },
+  "resources/js/admin/pages/events/EventIndex.vue": {
+    "file": "assets/EventIndex-CEvdn4wn.js",
+    "name": "EventIndex",
+    "src": "resources/js/admin/pages/events/EventIndex.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_utils-pRno_clU.js",
+      "resources/js/admin/main.js",
+      "_StatusBadge-D0llGnbP.js",
+      "_useResourceList-Rzo4E-XG.js"
+    ]
+  },
+  "resources/js/admin/pages/posts/PostForm.vue": {
+    "file": "assets/PostForm-CK1_4IFB.js",
+    "name": "PostForm",
+    "src": "resources/js/admin/pages/posts/PostForm.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_utils-pRno_clU.js",
+      "resources/js/admin/main.js",
+      "_FormField-BkfeeLOO.js",
+      "_RichTextEditor-CPxrrope.js"
+    ]
+  },
+  "resources/js/admin/pages/posts/PostIndex.vue": {
+    "file": "assets/PostIndex-utwfQGFf.js",
+    "name": "PostIndex",
+    "src": "resources/js/admin/pages/posts/PostIndex.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_utils-pRno_clU.js",
+      "resources/js/admin/main.js",
+      "_StatusBadge-D0llGnbP.js",
+      "_useResourceList-Rzo4E-XG.js"
+    ]
+  },
+  "resources/js/admin/pages/users/UserForm.vue": {
+    "file": "assets/UserForm-B7XgWRB0.js",
+    "name": "UserForm",
+    "src": "resources/js/admin/pages/users/UserForm.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_utils-pRno_clU.js",
+      "resources/js/admin/main.js",
+      "_FormField-BkfeeLOO.js"
+    ]
+  },
+  "resources/js/admin/pages/users/UserIndex.vue": {
+    "file": "assets/UserIndex-C6-8Va71.js",
+    "name": "UserIndex",
+    "src": "resources/js/admin/pages/users/UserIndex.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_utils-pRno_clU.js",
+      "resources/js/admin/main.js",
+      "_StatusBadge-D0llGnbP.js",
+      "_useResourceList-Rzo4E-XG.js"
+    ]
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-DcX97ZTm.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true
+  }
+}
