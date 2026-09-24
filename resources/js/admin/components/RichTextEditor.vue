@@ -124,13 +124,3 @@ const groups = [
     </div>
 </template>
 
-<style>
-/* Placeholder text for the empty editor (Tiptap Placeholder extension). */
-.tiptap p.is-editor-empty:first-child::before {
-    content: attr(data-placeholder);
-    float: left;
-    height: 0;
-    pointer-events: none;
-    color: var(--color-gray-400);
-}
-</style>

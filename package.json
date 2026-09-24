@@ -19,6 +19,8 @@
         "@laravel/multiplex": "^0.4.1"
     },
     "dependencies": {
+        "@fontsource/bebas-neue": "^5.3.0",
+        "@fontsource/instrument-sans": "^5.3.0",
         "@tiptap/extensions": "^3.31.3",
         "@tiptap/pm": "^3.31.3",
         "@tiptap/starter-kit": "^3.31.3",

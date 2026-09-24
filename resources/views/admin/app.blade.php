@@ -6,7 +6,6 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Admin · GEKRAFS</title>
     <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
-    @fonts
     @vite(['resources/css/app.css', 'resources/js/admin/main.js'])
 </head>
 <body class="h-full bg-gray-100 font-sans text-gray-900 antialiased">

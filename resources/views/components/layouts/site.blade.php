@@ -20,7 +20,6 @@
     <title>{{ $title ? $title.' · ' : '' }}GEKRAFS {{ __('The Netherlands') }}</title>
     <meta name="description" content="{{ __('organization.gekrafs definition') }}">
     <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
-    @fonts
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="flex min-h-full flex-col overflow-x-clip bg-white font-sans text-gray-900 antialiased">
