@@ -71,8 +71,8 @@ class PostController extends Controller
     {
         $data = $request->validate([
             'event_id' => ['nullable', 'integer', 'exists:events,id'],
-            'title' => ['required', 'string', 'max:255'],
-            'slug' => ['nullable', 'string', 'max:255', 'alpha_dash', Rule::unique('posts', 'slug')->ignore($post)],
+            'title' => ['required', 'string', 'max:191'],
+            'slug' => ['nullable', 'string', 'max:191', 'alpha_dash', Rule::unique('posts', 'slug')->ignore($post)],
             'excerpt' => ['nullable', 'string', 'max:500'],
             'body' => ['required', 'string'],
             'image' => ['nullable', 'image', 'max:4096'],

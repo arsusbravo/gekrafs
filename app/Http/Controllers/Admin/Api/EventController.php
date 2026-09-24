@@ -76,10 +76,10 @@ class EventController extends Controller
     private function validated(Request $request, ?Event $event = null): array
     {
         $data = $request->validate([
-            'title' => ['required', 'string', 'max:255'],
-            'slug' => ['nullable', 'string', 'max:255', 'alpha_dash', Rule::unique('events', 'slug')->ignore($event)],
+            'title' => ['required', 'string', 'max:191'],
+            'slug' => ['nullable', 'string', 'max:191', 'alpha_dash', Rule::unique('events', 'slug')->ignore($event)],
             'description' => ['nullable', 'string'],
-            'location' => ['nullable', 'string', 'max:255'],
+            'location' => ['nullable', 'string', 'max:191'],
             'starts_at' => ['required', 'date'],
             'ends_at' => ['nullable', 'date', 'after_or_equal:starts_at'],
             'image' => ['nullable', 'image', 'max:4096'],

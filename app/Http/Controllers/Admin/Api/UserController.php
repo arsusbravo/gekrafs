@@ -26,8 +26,8 @@ class UserController extends Controller
     public function store(Request $request): JsonResponse
     {
         $data = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:users,email'],
+            'name' => ['required', 'string', 'max:191'],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:191', 'unique:users,email'],
             'password' => ['required', Password::defaults()],
             'is_admin' => ['boolean'],
         ]);
@@ -46,8 +46,8 @@ class UserController extends Controller
     public function update(Request $request, User $user): JsonResponse
     {
         $data = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique('users', 'email')->ignore($user)],
+            'name' => ['required', 'string', 'max:191'],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:191', Rule::unique('users', 'email')->ignore($user)],
             'password' => ['nullable', Password::defaults()],
             'is_admin' => ['boolean'],
         ]);
