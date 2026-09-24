@@ -1,5 +1,5 @@
 <x-layouts.site :title="__('Events')">
-    <x-site.page-hero :eyebrow="__('Events')" :title="__('Upcoming events')" :image="asset('storage/images/pelantikan.jpg')">
+    <x-site.page-hero :eyebrow="__('Events')" :title="__('Upcoming events')" :image="asset('images/pelantikan.jpg')">
         {{ __('Join us at one of our events.') }}
     </x-site.page-hero>
 

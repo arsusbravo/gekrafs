@@ -1,5 +1,5 @@
 <x-layouts.site :title="__('Contact')">
-    <x-site.page-hero :eyebrow="__('Contact')" :title="__('Get in touch')" :image="asset('storage/images/boards.jpg')">
+    <x-site.page-hero :eyebrow="__('Contact')" :title="__('Get in touch')" :image="asset('images/boards.jpg')">
         {{ __('Questions about GEKRAFS in the Netherlands? Our representatives are happy to help.') }}
     </x-site.page-hero>
 
@@ -8,7 +8,7 @@
             <div class="space-y-8 lg:col-span-2">
                 <div class="rounded-3xl bg-brand-950 p-8 text-white">
                     <div class="flex items-center gap-3">
-                        <img src="{{ asset('storage/images/nl.png') }}" alt="" class="h-8 w-8 rounded-full">
+                        <img src="{{ asset('images/nl.png') }}" alt="" class="h-8 w-8 rounded-full">
                         <h2 class="font-display text-3xl tracking-wide">{{ __('Representative in the netherlands') }}</h2>
                     </div>
                     <ul class="mt-6 divide-y divide-white/10">
@@ -25,7 +25,7 @@
 
                 <div class="rounded-3xl bg-gray-50 p-8 ring-1 ring-gray-200">
                     <div class="flex items-center gap-3">
-                        <img src="{{ asset('storage/images/id.png') }}" alt="" class="h-8 w-8 rounded-full">
+                        <img src="{{ asset('images/id.png') }}" alt="" class="h-8 w-8 rounded-full">
                         <h2 class="font-display text-3xl tracking-wide text-brand-950">{{ __('Headquarter') }}</h2>
                     </div>
                     <address class="mt-5 flex gap-3 leading-relaxed text-gray-600 not-italic">

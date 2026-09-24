@@ -40,7 +40,9 @@ return [
 
         'public' => [
             'driver' => 'local',
-            'root' => storage_path('app/public'),
+            // Hosts that block symlinks (403 on /storage/...) can set PUBLIC_DISK_IN_WEBROOT=true
+            // to keep public files in a real public/storage folder instead of linking to it.
+            'root' => env('PUBLIC_DISK_IN_WEBROOT', false) ? public_path('storage') : storage_path('app/public'),
             'url' => rtrim(env('APP_URL', 'http://localhost'), '/').'/storage',
             'visibility' => 'public',
             'throw' => false,
@@ -73,7 +75,7 @@ return [
     |
     */
 
-    'links' => [
+    'links' => env('PUBLIC_DISK_IN_WEBROOT', false) ? [] : [
         public_path('storage') => storage_path('app/public'),
     ],
 

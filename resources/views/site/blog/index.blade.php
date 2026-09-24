@@ -1,5 +1,5 @@
 <x-layouts.site :title="__('News')">
-    <x-site.page-hero :eyebrow="__('News')" :title="__('Latest news')" :image="asset('storage/images/members1.png')">
+    <x-site.page-hero :eyebrow="__('News')" :title="__('Latest news')" :image="asset('images/members1.png')">
         {{ __('News, stories and updates from GEKRAFS in the Netherlands.') }}
     </x-site.page-hero>
 

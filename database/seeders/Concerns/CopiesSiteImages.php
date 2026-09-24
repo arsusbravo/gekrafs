@@ -7,18 +7,18 @@ use Illuminate\Support\Facades\Storage;
 trait CopiesSiteImages
 {
     /**
-     * Copy one of the site images (storage/app/public/images) into its own folder, so the
-     * admin can later replace or delete it without touching the original.
+     * Copy one of the site images (public/images) onto the public disk, where uploaded images live,
+     * so the admin can later replace or delete it without touching the original.
      */
     protected function copyImage(string $file, string $folder): ?string
     {
-        $disk = Storage::disk('public');
+        $source = public_path("images/{$file}");
 
-        if (! $disk->exists("images/{$file}")) {
+        if (! is_file($source)) {
             return null;
         }
 
-        $disk->copy("images/{$file}", "{$folder}/{$file}");
+        Storage::disk('public')->put("{$folder}/{$file}", file_get_contents($source));
 
         return "{$folder}/{$file}";
     }

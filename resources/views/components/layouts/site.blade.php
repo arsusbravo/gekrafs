@@ -19,7 +19,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ $title ? $title.' · ' : '' }}GEKRAFS {{ __('The Netherlands') }}</title>
     <meta name="description" content="{{ __('organization.gekrafs definition') }}">
-    <link rel="icon" type="image/png" href="{{ asset('storage/images/logo.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
     @fonts
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -27,7 +27,7 @@
     <header class="sticky top-0 z-40 border-b border-gray-100 bg-white/90 backdrop-blur">
         <div class="container-site flex h-20 items-center justify-between gap-6">
             <a href="{{ route('home') }}" class="flex shrink-0 items-center gap-3">
-                <img src="{{ asset('storage/images/logo.png') }}" alt="GEKRAFS" class="h-12 w-12">
+                <img src="{{ asset('images/logo.png') }}" alt="GEKRAFS" class="h-12 w-12">
                 <span class="leading-none">
                     <span class="block font-display text-3xl tracking-wider text-brand-800">Gekrafs</span>
                     <span class="block text-[11px] font-semibold tracking-wide text-gray-500 uppercase">DPLN {{ __('The Netherlands') }}</span>
@@ -82,7 +82,7 @@
                 <div class="flex items-center gap-2 px-3 pt-3">
                     @foreach ($locales as $code => $name)
                         <a href="{{ route('locale', $code) }}" @class(['flex items-center gap-2 rounded-full border px-3 py-1.5 text-sm font-medium', 'border-brand-600 bg-brand-50 text-brand-700' => $code === $locale, 'border-gray-200 text-gray-600' => $code !== $locale])>
-                            <img src="{{ asset('storage/images/'.$code.'.png') }}" alt="" class="h-5 w-5 rounded-full">
+                            <img src="{{ asset('images/'.$code.'.png') }}" alt="" class="h-5 w-5 rounded-full">
                             {{ strtoupper($code) }}
                         </a>
                     @endforeach

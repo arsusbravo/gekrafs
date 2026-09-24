@@ -9,8 +9,8 @@
         <div class="container-site relative grid items-end gap-10 pt-16 lg:grid-cols-2 lg:pt-20">
             <div class="pb-16 lg:pb-24">
                 <p class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-sm font-semibold ring-1 ring-white/20 backdrop-blur">
-                    <img src="{{ asset('storage/images/id.png') }}" alt="" class="h-4 w-4 rounded-full">
-                    <img src="{{ asset('storage/images/nl.png') }}" alt="" class="-ml-3 h-4 w-4 rounded-full ring-2 ring-brand-700">
+                    <img src="{{ asset('images/id.png') }}" alt="" class="h-4 w-4 rounded-full">
+                    <img src="{{ asset('images/nl.png') }}" alt="" class="-ml-3 h-4 w-4 rounded-full ring-2 ring-brand-700">
                     {{ __('Representative Council Abroad – The Netherlands') }}
                 </p>
                 <h1 class="mt-6 font-display text-7xl leading-[0.85] tracking-wide sm:text-8xl xl:text-9xl">
@@ -26,7 +26,7 @@
                 </div>
             </div>
             <div class="relative mx-auto w-full max-w-lg lg:max-w-none">
-                <img src="{{ asset('storage/images/members.png') }}" alt="GEKRAFS DPLN {{ __('The Netherlands') }}" class="relative w-full drop-shadow-2xl">
+                <img src="{{ asset('images/members.png') }}" alt="GEKRAFS DPLN {{ __('The Netherlands') }}" class="relative w-full drop-shadow-2xl">
             </div>
         </div>
     </section>
@@ -37,8 +37,8 @@
     <section class="py-20 sm:py-28">
         <div class="container-site grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
             <div class="relative">
-                <img src="{{ asset('storage/images/members1.png') }}" alt="GEKRAFS" class="photo-frame w-full -rotate-2">
-                <img src="{{ asset('storage/images/pelantikan.jpg') }}" alt="" class="photo-frame absolute -right-4 -bottom-12 hidden w-1/2 rotate-3 sm:block">
+                <img src="{{ asset('images/members1.png') }}" alt="GEKRAFS" class="photo-frame w-full -rotate-2">
+                <img src="{{ asset('images/pelantikan.jpg') }}" alt="" class="photo-frame absolute -right-4 -bottom-12 hidden w-1/2 rotate-3 sm:block">
                 <div class="absolute -top-5 -left-5 -z-10 h-32 w-32 rounded-3xl bg-accent-400"></div>
             </div>
             <div class="sm:pt-10 lg:pt-0">
@@ -102,7 +102,7 @@
             <p class="eyebrow justify-center text-accent-400">DPP GEKRAFS</p>
             <h2 class="section-title mt-2">{{ __('Central Board') }}</h2>
             <p class="mx-auto mt-3 max-w-xl text-brand-100">{{ __('The central leadership of GEKRAFS Indonesia') }}</p>
-            <img src="{{ asset('storage/images/dpp.png') }}" alt="Dewan Pimpinan Pusat GEKRAFS" class="mx-auto mt-10 w-full max-w-5xl">
+            <img src="{{ asset('images/dpp.png') }}" alt="Dewan Pimpinan Pusat GEKRAFS" class="mx-auto mt-10 w-full max-w-5xl">
         </div>
     </section>
 
@@ -111,10 +111,10 @@
         <div class="container-site">
             <x-section-heading eyebrow="DPLN Belanda" :title="__('programs.Inauguration of Representative Council in the Netherlands')" />
             <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:grid-rows-2">
-                <img src="{{ asset('storage/images/boards.jpg') }}" alt="DPLN Belanda" class="h-full min-h-72 w-full rounded-2xl object-cover sm:col-span-2 lg:row-span-2">
-                <img src="{{ asset('storage/images/members3.png') }}" alt="" class="h-full min-h-72 w-full rounded-2xl object-cover lg:row-span-2">
-                <img src="{{ asset('storage/images/members2.png') }}" alt="" class="h-full min-h-48 w-full rounded-2xl object-cover">
-                <img src="{{ asset('storage/images/members4.png') }}" alt="" class="h-full min-h-48 w-full rounded-2xl object-cover object-top">
+                <img src="{{ asset('images/boards.jpg') }}" alt="DPLN Belanda" class="h-full min-h-72 w-full rounded-2xl object-cover sm:col-span-2 lg:row-span-2">
+                <img src="{{ asset('images/members3.png') }}" alt="" class="h-full min-h-72 w-full rounded-2xl object-cover lg:row-span-2">
+                <img src="{{ asset('images/members2.png') }}" alt="" class="h-full min-h-48 w-full rounded-2xl object-cover">
+                <img src="{{ asset('images/members4.png') }}" alt="" class="h-full min-h-48 w-full rounded-2xl object-cover object-top">
             </div>
         </div>
     </section>
@@ -135,7 +135,7 @@
                         <div class="mt-4 flex flex-wrap gap-4">
                             @foreach (config('gekrafs.partners') as $partner)
                                 <a href="{{ $partner['url'] }}" target="_blank" rel="noopener" class="flex h-24 items-center rounded-2xl bg-white px-6 shadow-lg transition hover:-translate-y-1" title="{{ $partner['name'] }}">
-                                    <img src="{{ asset('storage/'.$partner['logo']) }}" alt="{{ $partner['name'] }}" class="max-h-16 w-auto">
+                                    <img src="{{ asset($partner['logo']) }}" alt="{{ $partner['name'] }}" class="max-h-16 w-auto">
                                 </a>
                             @endforeach
                         </div>

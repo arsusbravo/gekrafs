@@ -38,7 +38,7 @@ watch(() => route.fullPath, () => (sidebarOpen.value = false));
             ]"
         >
             <div class="flex h-16 items-center gap-2 px-6">
-                <img src="/storage/images/logo.png" alt="" class="h-9 w-9" />
+                <img src="/images/logo.png" alt="" class="h-9 w-9" />
                 <span class="font-display text-2xl tracking-wider text-white">{{ props.appName }}</span>
                 <span class="rounded bg-brand-600 px-1.5 py-0.5 text-xs font-medium text-white">Admin</span>
             </div>

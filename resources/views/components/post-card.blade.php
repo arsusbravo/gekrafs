@@ -5,7 +5,7 @@
         <img src="{{ $post->image_url }}" alt="" class="aspect-[16/10] w-full object-cover">
     @else
         <div class="bg-pattern flex aspect-[16/10] w-full items-center justify-center">
-            <img src="{{ asset('storage/images/logo.png') }}" alt="" class="h-16 w-16 opacity-90">
+            <img src="{{ asset('images/logo.png') }}" alt="" class="h-16 w-16 opacity-90">
         </div>
     @endif
     <div class="flex flex-1 flex-col gap-3 p-6">

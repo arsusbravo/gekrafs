@@ -6,7 +6,7 @@
     <div class="container-site grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-12">
         <div class="lg:col-span-4">
             <a href="{{ route('home') }}" class="flex items-center gap-3">
-                <img src="{{ asset('storage/images/logo.png') }}" alt="GEKRAFS" class="h-16 w-16">
+                <img src="{{ asset('images/logo.png') }}" alt="GEKRAFS" class="h-16 w-16">
                 <span class="leading-none">
                     <span class="block font-display text-4xl tracking-wider text-white">Gekrafs</span>
                     <span class="block text-xs font-semibold tracking-wide text-brand-300 uppercase">{{ __('organization.gekrafs') ?: 'Gerakan Ekonomi Kreatif Nasional' }}</span>
@@ -17,7 +17,7 @@
             <div class="mt-6 flex flex-wrap gap-3">
                 @foreach (config('gekrafs.partners') as $partner)
                     <a href="{{ $partner['url'] }}" target="_blank" rel="noopener" class="rounded-xl bg-white px-3 py-2 transition hover:scale-105" title="{{ $partner['name'] }}">
-                        <img src="{{ asset('storage/'.$partner['logo']) }}" alt="{{ $partner['name'] }}" class="h-10 w-auto">
+                        <img src="{{ asset($partner['logo']) }}" alt="{{ $partner['name'] }}" class="h-10 w-auto">
                     </a>
                 @endforeach
             </div>

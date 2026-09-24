@@ -63,6 +63,10 @@ class SiteTest extends TestCase
         $this->assertSame(2, Post::count());
         $this->assertSame(2, Post::whereNotNull('event_id')->count());
 
+        // Seeders copy their pictures from public/images onto the public disk.
+        $this->assertSame(0, Event::whereNull('image')->count() + Post::whereNull('image')->count());
+        Storage::disk('public')->assertExists(['events/boards.jpg', 'posts/pelantikan.jpg']);
+
         $this->travelTo('2026-09-23');
         $this->get('/')->assertSee('Indonesian Culinary &amp; Creative Fest 2026', false);
         $this->get('/events')->assertSee('Business Seminar: Investing in Wonderful Indonesia');

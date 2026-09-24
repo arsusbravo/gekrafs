@@ -1,5 +1,5 @@
 <x-layouts.site :title="__('About')">
-    <x-site.page-hero :eyebrow="__('Who we are')" title="Gekrafs | Gerakan Ekonomi Kreatif Nasional" :image="asset('storage/images/members1.png')">
+    <x-site.page-hero :eyebrow="__('Who we are')" title="Gekrafs | Gerakan Ekonomi Kreatif Nasional" :image="asset('images/members1.png')">
         @if (app()->getLocale() !== 'id')
             <em>{{ __('organization.gekrafs') }}</em> &middot;
         @endif
@@ -12,7 +12,7 @@
                 <p class="text-2xl leading-relaxed font-medium text-brand-950 sm:text-3xl sm:leading-snug">{{ __('organization.gekrafs definition') }}</p>
             </div>
             <div class="relative">
-                <img src="{{ asset('storage/images/members1.png') }}" alt="GEKRAFS" class="photo-frame w-full rotate-2">
+                <img src="{{ asset('images/members1.png') }}" alt="GEKRAFS" class="photo-frame w-full rotate-2">
                 <div class="absolute -right-4 -bottom-4 -z-10 h-full w-full rounded-2xl bg-accent-400"></div>
             </div>
         </div>
@@ -22,7 +22,7 @@
 
     <section id="mission" class="scroll-mt-24 py-20 sm:py-24">
         <div class="container-site grid items-center gap-12 lg:grid-cols-5 lg:gap-16">
-            <img src="{{ asset('storage/images/members2.png') }}" alt="" class="photo-frame w-full -rotate-1 lg:col-span-3">
+            <img src="{{ asset('images/members2.png') }}" alt="" class="photo-frame w-full -rotate-1 lg:col-span-3">
             <div class="lg:col-span-2">
                 <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-600 text-white"><x-icon name="flag" class="h-6 w-6" /></div>
                 <h2 class="section-title mt-5 text-brand-950">{{ __('organization.mission title') }}</h2>
@@ -48,7 +48,7 @@
                     @endforeach
                 </ul>
             </div>
-            <img src="{{ asset('storage/images/members3.png') }}" alt="" class="photo-frame mx-auto hidden max-h-[36rem] w-auto rotate-2 lg:block">
+            <img src="{{ asset('images/members3.png') }}" alt="" class="photo-frame mx-auto hidden max-h-[36rem] w-auto rotate-2 lg:block">
         </div>
     </section>
 
@@ -62,7 +62,7 @@
                     {{ __('organization.vision closing') }}
                 </blockquote>
             </div>
-            <img src="{{ asset('storage/images/members4.png') }}" alt="" class="photo-frame mx-auto max-h-[36rem] w-auto rotate-2 lg:col-span-2">
+            <img src="{{ asset('images/members4.png') }}" alt="" class="photo-frame mx-auto max-h-[36rem] w-auto rotate-2 lg:col-span-2">
         </div>
     </section>
 
@@ -71,7 +71,7 @@
             <p class="eyebrow justify-center text-brand-600">DPP GEKRAFS</p>
             <h2 class="section-title mt-2 text-brand-950">{{ __('Central Board') }}</h2>
             <div class="bg-pattern mt-10 overflow-hidden rounded-3xl px-4 pt-8">
-                <img src="{{ asset('storage/images/dpp.png') }}" alt="Dewan Pimpinan Pusat GEKRAFS" class="mx-auto w-full max-w-5xl">
+                <img src="{{ asset('images/dpp.png') }}" alt="Dewan Pimpinan Pusat GEKRAFS" class="mx-auto w-full max-w-5xl">
             </div>
         </div>
     </section>
