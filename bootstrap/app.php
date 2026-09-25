@@ -20,7 +20,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'admin' => EnsureUserIsAdmin::class,
         ]);
-        $middleware->redirectUsersTo(fn () => request()->user()?->is_admin ? '/admin' : '/');
+        $middleware->redirectUsersTo('/admin');
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(

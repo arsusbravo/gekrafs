@@ -6,7 +6,6 @@ const el = document.getElementById('admin-app');
 
 createApp(App, {
     appName: el.dataset.appName,
-    user: JSON.parse(el.dataset.user),
     logoutUrl: el.dataset.logoutUrl,
     siteUrl: el.dataset.siteUrl,
 })

@@ -46,16 +46,18 @@ Route::middleware('guest')->group(function () {
 Route::post('/logout', [LoginController::class, 'destroy'])->middleware('auth')->name('logout');
 
 /*
-| Admin (Vue 3 SPA + JSON endpoints, session authenticated)
+| Admin (Vue 3 SPA + JSON endpoints, session authenticated).
+| Every logged-in user manages events and news; only admins manage users.
 */
-Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::prefix('api')->name('api.')->group(function () {
-        Route::get('/me', fn () => request()->user()->only('id', 'name', 'email'))->name('me');
+        Route::get('/account', [Api\AccountController::class, 'show'])->name('account');
+        Route::put('/account/password', [Api\AccountController::class, 'updatePassword'])->name('account.password');
         Route::get('/dashboard', Api\DashboardController::class)->name('dashboard');
         Route::get('/events/options', [Api\EventController::class, 'options'])->name('events.options');
         Route::apiResource('events', Api\EventController::class)->scoped(['event' => 'id']);
         Route::apiResource('posts', Api\PostController::class)->scoped(['post' => 'id']);
-        Route::apiResource('users', Api\UserController::class);
+        Route::apiResource('users', Api\UserController::class)->middleware('admin');
     });
 
     Route::get('/{any?}', AdminController::class)->where('any', '^(?!api).*$')->name('app');

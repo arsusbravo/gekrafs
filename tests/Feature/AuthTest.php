@@ -30,11 +30,11 @@ class AuthTest extends TestCase
         $this->get('/login')->assertDontSee('/register');
     }
 
-    public function test_regular_user_is_redirected_home_after_login(): void
+    public function test_regular_user_is_redirected_to_admin_after_login(): void
     {
         $user = User::factory()->create();
 
-        $this->post('/login', ['email' => $user->email, 'password' => 'password'])->assertRedirect('/');
+        $this->post('/login', ['email' => $user->email, 'password' => 'password'])->assertRedirect('/admin');
         $this->assertAuthenticatedAs($user);
     }
 

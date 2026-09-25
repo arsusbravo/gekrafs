@@ -11,7 +11,7 @@
 <body class="h-full bg-gray-100 font-sans text-gray-900 antialiased">
     <div id="admin-app"
          data-app-name="{{ config('app.name') }}"
-         data-user='@json(auth()->user()->only('id', 'name', 'email'))'
+         data-user="{{ json_encode(['id' => auth()->id(), 'name' => auth()->user()->name, 'email' => auth()->user()->email, 'is_admin' => (bool) auth()->user()->is_admin]) }}"
          data-logout-url="{{ route('logout') }}"
          data-site-url="{{ route('home') }}"></div>
 </body>

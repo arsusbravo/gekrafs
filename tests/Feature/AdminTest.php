@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
@@ -28,12 +29,52 @@ class AdminTest extends TestCase
         $this->getJson('/admin/api/events')->assertUnauthorized();
     }
 
-    public function test_regular_users_cannot_access_admin(): void
+    public function test_regular_users_can_manage_content_but_not_users(): void
+    {
+        $user = User::factory()->create();
+        $other = User::factory()->create();
+
+        $this->actingAs($user)->get('/admin')->assertOk();
+        $this->actingAs($user)->getJson('/admin/api/dashboard')->assertOk()->assertJsonPath('stats.users', null);
+        $this->actingAs($user)->getJson('/admin/api/events')->assertOk();
+        $this->actingAs($user)->postJson('/admin/api/posts', ['title' => 'By a user', 'body' => '<p>Hello</p>'])->assertCreated();
+
+        $this->actingAs($user)->getJson('/admin/api/users')->assertForbidden();
+        $this->actingAs($user)->getJson("/admin/api/users/{$other->id}")->assertForbidden();
+        $this->actingAs($user)->postJson('/admin/api/users', ['name' => 'X', 'email' => 'x@example.com', 'password' => 'secret-password'])->assertForbidden();
+        $this->actingAs($user)->putJson("/admin/api/users/{$user->id}", ['name' => 'Me', 'email' => $user->email, 'is_admin' => true])->assertForbidden();
+        $this->actingAs($user)->deleteJson("/admin/api/users/{$other->id}")->assertForbidden();
+
+        $this->assertFalse($user->fresh()->is_admin);
+        $this->assertModelExists($other);
+    }
+
+    public function test_users_can_view_their_account_and_change_their_password(): void
     {
         $user = User::factory()->create();
 
-        $this->actingAs($user)->get('/admin')->assertForbidden();
-        $this->actingAs($user)->getJson('/admin/api/events')->assertForbidden();
+        $this->actingAs($user)->getJson('/admin/api/account')
+            ->assertOk()->assertJsonPath('email', $user->email)->assertJsonPath('is_admin', false)->assertJsonMissingPath('password');
+
+        $this->actingAs($user)->putJson('/admin/api/account/password', [
+            'current_password' => 'wrong',
+            'password' => 'new-secret-password',
+            'password_confirmation' => 'new-secret-password',
+        ])->assertJsonValidationErrors('current_password');
+
+        $this->actingAs($user)->putJson('/admin/api/account/password', [
+            'current_password' => 'password',
+            'password' => 'new-secret-password',
+            'password_confirmation' => 'different',
+        ])->assertJsonValidationErrors('password');
+
+        $this->actingAs($user)->putJson('/admin/api/account/password', [
+            'current_password' => 'password',
+            'password' => 'new-secret-password',
+            'password_confirmation' => 'new-secret-password',
+        ])->assertOk();
+
+        $this->assertTrue(Hash::check('new-secret-password', $user->fresh()->password));
     }
 
     public function test_admin_can_open_spa_on_any_path(): void

@@ -26,7 +26,7 @@ onMounted(async () => {
                 <p class="mt-1 text-3xl font-semibold">{{ data.stats.published_posts }}</p>
                 <p class="mt-1 text-xs text-gray-400">{{ data.stats.posts }} total</p>
             </div>
-            <div class="rounded-xl border border-gray-200 bg-white p-5">
+            <div v-if="data.stats.users !== null" class="rounded-xl border border-gray-200 bg-white p-5">
                 <p class="text-sm text-gray-500">Users</p>
                 <p class="mt-1 text-3xl font-semibold">{{ data.stats.users }}</p>
             </div>

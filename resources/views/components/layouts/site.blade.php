@@ -54,9 +54,7 @@
                 <x-site.language-switcher :locales="$locales" :locale="$locale" />
 
                 @auth
-                    @if (auth()->user()->is_admin)
-                        <a href="/admin" class="btn btn-secondary py-2">Admin</a>
-                    @endif
+                    <a href="/admin" class="btn btn-secondary py-2">Admin</a>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <button type="submit" class="btn btn-primary py-2" title="{{ auth()->user()->name }}">{{ __('Log out') }}</button>
@@ -95,9 +93,7 @@
 
                 <div class="flex gap-3 border-t border-gray-100 px-3 pt-4 mt-3">
                     @auth
-                        @if (auth()->user()->is_admin)
-                            <a href="/admin" class="btn btn-secondary flex-1">Admin</a>
-                        @endif
+                        <a href="/admin" class="btn btn-secondary flex-1">Admin</a>
                         <form method="POST" action="{{ route('logout') }}" class="flex-1">
                             @csrf
                             <button type="submit" class="btn btn-primary w-full">{{ __('Log out') }}</button>
