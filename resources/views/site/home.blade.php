@@ -60,24 +60,8 @@
         </div>
     </section>
 
-    {{-- Latest news --}}
+    {{-- Latest events --}}
     <section class="bg-gray-50 py-20 sm:py-28">
-        <div class="container-site">
-            <x-section-heading :eyebrow="__('News')" :title="__('Latest news')" :link="localized_route('blog.index')" :link-label="__('View all')" />
-            @if ($posts->isEmpty())
-                <p class="text-gray-500">{{ __('No news published yet.') }}</p>
-            @else
-                <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-                    @foreach ($posts as $post)
-                        <x-post-card :post="$post" />
-                    @endforeach
-                </div>
-            @endif
-        </div>
-    </section>
-
-    {{-- Upcoming events --}}
-    <section class="py-20 sm:py-28">
         <div class="container-site">
             <x-section-heading :eyebrow="__('Events')" :title="__('Upcoming events')" :link="localized_route('events.index')" :link-label="__('View all')" />
             @if ($events->isEmpty())
@@ -89,6 +73,22 @@
                 <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
                     @foreach ($events as $event)
                         <x-event-card :event="$event" />
+                    @endforeach
+                </div>
+            @endif
+        </div>
+    </section>
+
+    {{-- Upcoming news --}}
+    <section class="py-20 sm:py-28">
+        <div class="container-site">
+            <x-section-heading :eyebrow="__('News')" :title="__('Latest news')" :link="localized_route('blog.index')" :link-label="__('View all')" />
+            @if ($posts->isEmpty())
+                <p class="text-gray-500">{{ __('No news published yet.') }}</p>
+            @else
+                <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                    @foreach ($posts as $post)
+                        <x-post-card :post="$post" />
                     @endforeach
                 </div>
             @endif
