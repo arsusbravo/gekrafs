@@ -74,13 +74,37 @@
     }
     /* Rich text from the admin editor, on the website and inside the editor itself */
     .prose-gekrafs {
-        @apply prose prose-lg max-w-none prose-gray prose-headings:font-display prose-headings:font-normal prose-headings:tracking-wide prose-headings:text-brand-950 prose-h2:text-4xl prose-h3:text-3xl prose-a:font-semibold prose-a:text-brand-600 hover:prose-a:text-brand-800 prose-blockquote:border-accent-500 prose-blockquote:font-medium prose-blockquote:text-brand-900 prose-strong:text-gray-900 prose-li:my-1 prose-li:marker:text-brand-500;
+        @apply prose prose-lg max-w-none prose-gray prose-headings:font-display prose-headings:font-normal prose-headings:tracking-wide prose-headings:text-brand-950 prose-h2:text-4xl prose-h3:text-3xl prose-a:font-semibold prose-a:text-brand-600 hover:prose-a:text-brand-800 prose-blockquote:border-accent-500 prose-blockquote:font-medium prose-blockquote:text-brand-900 prose-strong:text-gray-900 prose-li:my-1 prose-li:marker:text-brand-500 prose-img:rounded-2xl prose-img:shadow-md;
     }
     /* Placeholder text for the empty rich text editor (Tiptap Placeholder extension). */
     .tiptap p.is-editor-empty:first-child::before {
         content: attr(data-placeholder);
         @apply pointer-events-none float-left h-0 text-gray-400;
     }
+    /* Images in the rich text editor: highlight the selected one. */
+    .tiptap img {
+        @apply rounded-lg;
+    }
+    .tiptap img.ProseMirror-selectednode,
+    .tiptap .ProseMirror-selectednode img {
+        @apply ring-4 ring-brand-500 ring-offset-2;
+    }
+    /* Resizable images: keep the aspect ratio and fit the editor width. */
+    .tiptap [data-resize-wrapper] img {
+        max-width: 100%;
+        height: auto !important;
+    }
+    .tiptap [data-resize-handle] {
+        @apply z-10 h-3 w-3 rounded-full border-2 border-white bg-brand-600 opacity-0 shadow transition;
+    }
+    .tiptap [data-resize-container]:hover [data-resize-handle],
+    .tiptap .ProseMirror-selectednode [data-resize-handle] {
+        @apply opacity-100;
+    }
+    .tiptap [data-resize-handle='top-left'] { @apply -translate-x-1/2 -translate-y-1/2 cursor-nwse-resize; }
+    .tiptap [data-resize-handle='top-right'] { @apply translate-x-1/2 -translate-y-1/2 cursor-nesw-resize; }
+    .tiptap [data-resize-handle='bottom-left'] { @apply -translate-x-1/2 translate-y-1/2 cursor-nesw-resize; }
+    .tiptap [data-resize-handle='bottom-right'] { @apply translate-x-1/2 translate-y-1/2 cursor-nwse-resize; }
     .prose-gekrafs-editor {
         @apply prose max-w-none prose-gray prose-headings:font-display prose-headings:font-normal prose-headings:tracking-wide prose-headings:text-brand-950 prose-a:text-brand-600 prose-blockquote:border-accent-500 prose-li:my-0.5;
     }

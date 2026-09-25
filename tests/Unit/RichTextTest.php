@@ -50,4 +50,35 @@ class RichTextTest extends TestCase
         $this->assertStringContainsString('<p>Speakers:</p><ul><li><p>Alice</p></li><li><p>Bob</p></li></ul>', $html);
         $this->assertStringContainsString('<p>Line one<br />line two</p>', $html);
     }
+
+    public function test_it_keeps_uploaded_images_and_lazy_loads_them(): void
+    {
+        $clean = RichText::sanitize('<p>Intro</p><img src="/uploads/content/photo.jpg" alt="Guests">');
+
+        $this->assertStringContainsString('<img src="/uploads/content/photo.jpg" alt="Guests" loading="lazy" />', $clean);
+    }
+
+    public function test_it_keeps_the_size_of_resized_images(): void
+    {
+        $clean = RichText::sanitize('<img src="/uploads/content/photo.jpg" width="420" height="280" style="float:left">');
+
+        $this->assertStringContainsString('width="420"', $clean);
+        $this->assertStringContainsString('height="280"', $clean);
+        $this->assertStringNotContainsString('style=', $clean);
+    }
+
+    public function test_it_removes_unsafe_image_sources(): void
+    {
+        $clean = RichText::sanitize('<p>Text</p><img src="javascript:alert(1)"><img src="data:image/png;base64,AAAA"><img src="http://tracker.test/pixel.gif"><img src="https://cdn.test/ok.jpg">');
+
+        $this->assertStringNotContainsString('javascript:', $clean);
+        $this->assertStringNotContainsString('data:', $clean);
+        $this->assertStringNotContainsString('http://tracker.test', $clean);
+        $this->assertStringContainsString('src="https://cdn.test/ok.jpg"', $clean);
+    }
+
+    public function test_content_with_only_an_image_is_not_blank(): void
+    {
+        $this->assertFalse(RichText::isBlank('<p><img src="/uploads/content/photo.jpg"></p>'));
+    }
 }

@@ -54,6 +54,7 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
         Route::get('/account', [Api\AccountController::class, 'show'])->name('account');
         Route::put('/account/password', [Api\AccountController::class, 'updatePassword'])->name('account.password');
         Route::get('/dashboard', Api\DashboardController::class)->name('dashboard');
+        Route::post('/images', Api\ImageUploadController::class)->name('images.store');
         Route::get('/events/options', [Api\EventController::class, 'options'])->name('events.options');
         Route::apiResource('events', Api\EventController::class)->scoped(['event' => 'id']);
         Route::apiResource('posts', Api\PostController::class)->scoped(['post' => 'id']);

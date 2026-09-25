@@ -95,7 +95,7 @@ class AdminTest extends TestCase
 
     public function test_admin_can_manage_events(): void
     {
-        Storage::fake('public');
+        $disk = Storage::fake('public');
         $admin = $this->actingAs($this->admin());
 
         $response = $admin->post('/admin/api/events', [
@@ -108,7 +108,7 @@ class AdminTest extends TestCase
 
         $event = Event::find($response->json('id'));
         $this->assertTrue($event->is_published);
-        Storage::disk('public')->assertExists($event->image);
+        $disk->assertExists($event->image);
 
         $admin->post("/admin/api/events/{$event->id}", [
             '_method' => 'PUT',
@@ -119,7 +119,7 @@ class AdminTest extends TestCase
             'remove_image' => '1',
         ], ['Accept' => 'application/json'])->assertOk()->assertJsonPath('title', 'Launch Party 2');
 
-        Storage::disk('public')->assertMissing($event->image);
+        $disk->assertMissing($event->image);
         $this->assertNull($event->fresh()->image);
         $this->assertFalse($event->fresh()->is_published);
 
@@ -209,5 +209,42 @@ class AdminTest extends TestCase
     {
         $this->actingAs($this->admin())->postJson('/admin/api/posts', ['title' => 'Empty', 'body' => '<p></p>'])
             ->assertUnprocessable()->assertJsonValidationErrors('body');
+    }
+
+    public function test_guests_cannot_upload_editor_images(): void
+    {
+        $disk = Storage::fake('public');
+
+        $this->postJson('/admin/api/images', ['image' => UploadedFile::fake()->image('photo.jpg')])->assertUnauthorized();
+
+        $this->assertEmpty($disk->allFiles());
+    }
+
+    public function test_users_can_upload_editor_images(): void
+    {
+        $disk = Storage::fake('public');
+
+        $response = $this->actingAs(User::factory()->create())
+            ->postJson('/admin/api/images', ['image' => UploadedFile::fake()->image('photo.jpg')])
+            ->assertCreated();
+
+        $stored = $disk->files('content');
+
+        $this->assertCount(1, $stored);
+        $this->assertSame($disk->url($stored[0]), $response->json('url'));
+    }
+
+    public function test_editor_image_uploads_must_be_raster_images(): void
+    {
+        $disk = Storage::fake('public');
+        $user = User::factory()->create();
+
+        $this->actingAs($user)->postJson('/admin/api/images', ['image' => UploadedFile::fake()->create('notes.pdf', 10, 'application/pdf')])
+            ->assertJsonValidationErrors(['image' => 'The image field must be an image.']);
+
+        $svg = UploadedFile::fake()->createWithContent('logo.svg', '<svg xmlns="http://www.w3.org/2000/svg" onload="alert(1)"></svg>');
+        $this->actingAs($user)->postJson('/admin/api/images', ['image' => $svg])->assertJsonValidationErrors('image');
+
+        $this->assertEmpty($disk->allFiles());
     }
 }

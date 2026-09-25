@@ -53,12 +53,12 @@ class RichText
      */
     public static function isBlank(?string $html): bool
     {
-        return trim(html_entity_decode(strip_tags($html ?? '')), " \t\n\r\0\x0B\u{A0}") === '';
+        return trim(html_entity_decode(strip_tags($html ?? '', '<img>')), " \t\n\r\0\x0B\u{A0}") === '';
     }
 
     public static function isHtml(string $value): bool
     {
-        return (bool) preg_match('/<(p|h[1-6]|ul|ol|li|blockquote|br|strong|em|a)[\s>\/]/i', $value);
+        return (bool) preg_match('/<(p|h[1-6]|ul|ol|li|blockquote|br|strong|em|a|img)[\s>\/]/i', $value);
     }
 
     private static function sanitizer(): HtmlSanitizer
@@ -84,9 +84,13 @@ class RichText
                 ->allowElement('code')
                 ->allowElement('pre')
                 ->allowElement('a', ['href', 'target'])
+                ->allowElement('img', ['src', 'alt', 'title', 'width', 'height'])
                 ->allowLinkSchemes(['http', 'https', 'mailto', 'tel'])
                 ->allowRelativeLinks()
+                ->allowMediaSchemes(['https'])
+                ->allowRelativeMedias()
                 ->forceAttribute('a', 'rel', 'noopener noreferrer')
+                ->forceAttribute('img', 'loading', 'lazy')
         );
     }
 }

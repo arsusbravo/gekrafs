@@ -24,3 +24,10 @@ _ide_helper.php
 Homestead.json
 Homestead.yaml
 Thumbs.db
+
+# AI assistant files (Claude Code, Laravel Boost) - local only
+/.claude
+/.mcp.json
+/boost.json
+/CLAUDE.md
+/AGENTS.md

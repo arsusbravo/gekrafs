@@ -95,7 +95,7 @@ class SiteTest extends TestCase
 
     public function test_seeders_create_events_and_their_reports(): void
     {
-        Storage::fake('public');
+        $disk = Storage::fake('public');
         $this->seed();
 
         $this->assertSame(3, Event::count());
@@ -104,7 +104,7 @@ class SiteTest extends TestCase
 
         // Seeders copy their pictures from public/images onto the public disk.
         $this->assertSame(0, Event::whereNull('image')->count() + Post::whereNull('image')->count());
-        Storage::disk('public')->assertExists(['events/boards.jpg', 'posts/pelantikan.jpg']);
+        $disk->assertExists(['events/boards.jpg', 'posts/pelantikan.jpg']);
 
         $this->travelTo('2026-09-23');
         $this->get('/')->assertSee('Indonesian Culinary &amp; Creative Fest 2026', false);

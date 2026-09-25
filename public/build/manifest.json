@@ -1,27 +1,28 @@
 {
-  "_FormField-B2ZG870t.js": {
-    "file": "assets/FormField-B2ZG870t.js",
+  "_FormField-CMho8B8p.js": {
+    "file": "assets/FormField-CMho8B8p.js",
     "name": "FormField",
     "imports": [
       "resources/js/admin/main.js"
     ]
   },
-  "_RichTextEditor-F_GedDy7.js": {
-    "file": "assets/RichTextEditor-F_GedDy7.js",
+  "_RichTextEditor-BDsSrOHs.js": {
+    "file": "assets/RichTextEditor-BDsSrOHs.js",
     "name": "RichTextEditor",
     "imports": [
+      "_utils-pRno_clU.js",
       "resources/js/admin/main.js"
     ]
   },
-  "_StatusBadge-CqBvV1rK.js": {
-    "file": "assets/StatusBadge-CqBvV1rK.js",
+  "_StatusBadge-C-LKdGO2.js": {
+    "file": "assets/StatusBadge-C-LKdGO2.js",
     "name": "StatusBadge",
     "imports": [
       "resources/js/admin/main.js"
     ]
   },
-  "_useResourceList-Bn45c-9r.js": {
-    "file": "assets/useResourceList-Bn45c-9r.js",
+  "_useResourceList-DaNuT3K7.js": {
+    "file": "assets/useResourceList-DaNuT3K7.js",
     "name": "useResourceList",
     "imports": [
       "_utils-pRno_clU.js",
@@ -73,7 +74,7 @@
     "src": "node_modules/@fontsource/instrument-sans/files/instrument-sans-latin-700-normal.woff2"
   },
   "resources/css/app.css": {
-    "file": "assets/app-CZ0jau0k.css",
+    "file": "assets/app-Dj-hyqe-.css",
     "name": "app",
     "names": [
       "app.css"
@@ -99,7 +100,7 @@
     "src": "resources/images/bg-pattern.jpg"
   },
   "resources/js/admin/main.js": {
-    "file": "assets/main-BUph3jU1.js",
+    "file": "assets/main-BvtcZju8.js",
     "name": "main",
     "src": "resources/js/admin/main.js",
     "isEntry": true,
@@ -116,29 +117,29 @@
     ]
   },
   "resources/js/admin/pages/Account.vue": {
-    "file": "assets/Account-D1OtMhX-.js",
+    "file": "assets/Account-DbAcKOqo.js",
     "name": "Account",
     "src": "resources/js/admin/pages/Account.vue",
     "isDynamicEntry": true,
     "imports": [
       "_utils-pRno_clU.js",
       "resources/js/admin/main.js",
-      "_FormField-B2ZG870t.js"
+      "_FormField-CMho8B8p.js"
     ]
   },
   "resources/js/admin/pages/Dashboard.vue": {
-    "file": "assets/Dashboard-Dgvva7wJ.js",
+    "file": "assets/Dashboard-BiAMtKzt.js",
     "name": "Dashboard",
     "src": "resources/js/admin/pages/Dashboard.vue",
     "isDynamicEntry": true,
     "imports": [
       "_utils-pRno_clU.js",
       "resources/js/admin/main.js",
-      "_StatusBadge-CqBvV1rK.js"
+      "_StatusBadge-C-LKdGO2.js"
     ]
   },
   "resources/js/admin/pages/NotFound.vue": {
-    "file": "assets/NotFound-D2Bvx9s4.js",
+    "file": "assets/NotFound-BGOBP7Yf.js",
     "name": "NotFound",
     "src": "resources/js/admin/pages/NotFound.vue",
     "isDynamicEntry": true,
@@ -147,74 +148,74 @@
     ]
   },
   "resources/js/admin/pages/events/EventForm.vue": {
-    "file": "assets/EventForm-B8_BzZNG.js",
+    "file": "assets/EventForm-EBfKyTxj.js",
     "name": "EventForm",
     "src": "resources/js/admin/pages/events/EventForm.vue",
     "isDynamicEntry": true,
     "imports": [
       "_utils-pRno_clU.js",
       "resources/js/admin/main.js",
-      "_FormField-B2ZG870t.js",
-      "_RichTextEditor-F_GedDy7.js"
+      "_FormField-CMho8B8p.js",
+      "_RichTextEditor-BDsSrOHs.js"
     ]
   },
   "resources/js/admin/pages/events/EventIndex.vue": {
-    "file": "assets/EventIndex-CyVmw67m.js",
+    "file": "assets/EventIndex-B2nEoLre.js",
     "name": "EventIndex",
     "src": "resources/js/admin/pages/events/EventIndex.vue",
     "isDynamicEntry": true,
     "imports": [
       "_utils-pRno_clU.js",
       "resources/js/admin/main.js",
-      "_StatusBadge-CqBvV1rK.js",
-      "_useResourceList-Bn45c-9r.js"
+      "_StatusBadge-C-LKdGO2.js",
+      "_useResourceList-DaNuT3K7.js"
     ]
   },
   "resources/js/admin/pages/posts/PostForm.vue": {
-    "file": "assets/PostForm-Dp9yeQM_.js",
+    "file": "assets/PostForm-Z7c5RXoh.js",
     "name": "PostForm",
     "src": "resources/js/admin/pages/posts/PostForm.vue",
     "isDynamicEntry": true,
     "imports": [
       "_utils-pRno_clU.js",
       "resources/js/admin/main.js",
-      "_FormField-B2ZG870t.js",
-      "_RichTextEditor-F_GedDy7.js"
+      "_FormField-CMho8B8p.js",
+      "_RichTextEditor-BDsSrOHs.js"
     ]
   },
   "resources/js/admin/pages/posts/PostIndex.vue": {
-    "file": "assets/PostIndex-B1VJtOzl.js",
+    "file": "assets/PostIndex-BTghPazC.js",
     "name": "PostIndex",
     "src": "resources/js/admin/pages/posts/PostIndex.vue",
     "isDynamicEntry": true,
     "imports": [
       "_utils-pRno_clU.js",
       "resources/js/admin/main.js",
-      "_StatusBadge-CqBvV1rK.js",
-      "_useResourceList-Bn45c-9r.js"
+      "_StatusBadge-C-LKdGO2.js",
+      "_useResourceList-DaNuT3K7.js"
     ]
   },
   "resources/js/admin/pages/users/UserForm.vue": {
-    "file": "assets/UserForm-DsBKfKw_.js",
+    "file": "assets/UserForm-DCyPZ9ik.js",
     "name": "UserForm",
     "src": "resources/js/admin/pages/users/UserForm.vue",
     "isDynamicEntry": true,
     "imports": [
       "_utils-pRno_clU.js",
       "resources/js/admin/main.js",
-      "_FormField-B2ZG870t.js"
+      "_FormField-CMho8B8p.js"
     ]
   },
   "resources/js/admin/pages/users/UserIndex.vue": {
-    "file": "assets/UserIndex-DJvaqBly.js",
+    "file": "assets/UserIndex-CjckEzHR.js",
     "name": "UserIndex",
     "src": "resources/js/admin/pages/users/UserIndex.vue",
     "isDynamicEntry": true,
     "imports": [
       "_utils-pRno_clU.js",
       "resources/js/admin/main.js",
-      "_StatusBadge-CqBvV1rK.js",
-      "_useResourceList-Bn45c-9r.js"
+      "_StatusBadge-C-LKdGO2.js",
+      "_useResourceList-DaNuT3K7.js"
     ]
   },
   "resources/js/app.js": {
