@@ -17,6 +17,16 @@ return [
 
     'map_link' => 'https://maps.google.com/?q=GEKRAFS+Headquarter+Jakarta',
 
+    // Susunan kepengurusan DPLN GEKRAFS Belanda. Roles are translated in lang/*.json,
+    // photos live in public/images/boards (square; members without one show their initials).
+    'board' => [
+        ['name' => 'Maya W. Montolalu', 'role' => 'Chair', 'photo' => 'images/boards/mm.jpg'],
+        ['name' => 'Endang den Boer-Wahyuni', 'role' => 'Secretary', 'photo' => 'images/boards/ep.jpg'],
+        ['name' => 'Zenadia Cornelie Janine Barthélemy', 'role' => 'Treasurer', 'photo' => 'images/boards/zb.jpg'],
+        ['name' => 'Christina Ellen Nelwan', 'role' => 'Public Relations', 'photo' => 'images/boards/cn.jpg'],
+        ['name' => 'Ario Susmaryono', 'role' => 'IT', 'photo' => 'images/boards/as.jpg'],
+    ],
+
     'representatives' => [
         ['name' => 'Endang den Boer-Wahyuni', 'phone' => '+31 6 242 924 52'],
         ['name' => 'Zenadia Cornelie Janine Barthélemy', 'phone' => '+31 6 183 288 58'],

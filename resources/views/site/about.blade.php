@@ -48,7 +48,7 @@
                     @endforeach
                 </ul>
             </div>
-            <img src="{{ asset('images/members3.png') }}" alt="" class="photo-frame mx-auto hidden max-h-[36rem] w-auto rotate-2 lg:block">
+            <img src="{{ asset('images/members3.png') }}" alt="" class="photo-frame mx-auto hidden max-h-144 w-auto rotate-2 lg:block">
         </div>
     </section>
 
@@ -62,7 +62,53 @@
                     {{ __('organization.vision closing') }}
                 </blockquote>
             </div>
-            <img src="{{ asset('images/members4.png') }}" alt="" class="photo-frame mx-auto max-h-[36rem] w-auto rotate-2 lg:col-span-2">
+            <img src="{{ asset('images/members4.png') }}" alt="" class="photo-frame mx-auto max-h-144 w-auto rotate-2 lg:col-span-2">
+        </div>
+    </section>
+
+    @php
+        $board = config('gekrafs.board');
+        $chair = array_shift($board);
+        $initials = fn (string $name) => collect(explode(' ', $name))
+            ->pipe(fn ($words) => mb_substr($words->first(), 0, 1).mb_substr($words->last(), 0, 1));
+    @endphp
+
+    <section id="board" class="bg-pattern relative scroll-mt-24 overflow-hidden py-20 text-white sm:py-24">
+        <div class="absolute inset-0 bg-brand-950/85"></div>
+        <div class="container-site relative">
+            <div class="text-center">
+                <p class="eyebrow justify-center text-accent-400"><span class="h-0.5 w-8 bg-current"></span>{{ __('Our team') }}<span class="h-0.5 w-8 bg-current"></span></p>
+                <h2 class="section-title mt-2">{{ __('Board of DPLN GEKRAFS Netherlands') }}</h2>
+                <p class="mx-auto mt-4 max-w-xl text-brand-100">{{ __('The people who represent GEKRAFS in the Netherlands.') }}</p>
+            </div>
+
+            <div class="mx-auto mt-12 flex max-w-md flex-col items-center rounded-3xl bg-white/10 px-6 py-8 text-center ring-1 ring-white/20 backdrop-blur">
+                @if (! empty($chair['photo']))
+                    <img src="{{ asset($chair['photo']) }}" alt="{{ $chair['name'] }}" class="h-36 w-36 rounded-full bg-accent-500 object-cover ring-4 ring-accent-400 ring-offset-4 ring-offset-brand-900">
+                @else
+                    <div class="flex h-36 w-36 items-center justify-center rounded-full bg-accent-500 font-display text-5xl tracking-wide text-brand-950 ring-4 ring-accent-300/50">
+                        {{ $initials($chair['name']) }}
+                    </div>
+                @endif
+                <p class="mt-5 text-xs font-bold tracking-[0.2em] text-accent-400 uppercase">{{ __($chair['role']) }}</p>
+                <h3 class="mt-1 font-display text-4xl leading-none tracking-wide">{{ $chair['name'] }}</h3>
+            </div>
+
+            <ul class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                @foreach ($board as $member)
+                    <li class="flex flex-col items-center rounded-2xl bg-white/5 px-4 py-6 text-center ring-1 ring-white/10 backdrop-blur">
+                        @if (! empty($member['photo']))
+                            <img src="{{ asset($member['photo']) }}" alt="{{ $member['name'] }}" loading="lazy" class="h-28 w-28 rounded-full bg-brand-600 object-cover ring-4 ring-white/15">
+                        @else
+                            <div class="flex h-28 w-28 items-center justify-center rounded-full bg-brand-600 font-display text-3xl tracking-wide ring-4 ring-white/10">
+                                {{ $initials($member['name']) }}
+                            </div>
+                        @endif
+                        <p class="mt-4 text-xs font-bold tracking-[0.2em] text-accent-400 uppercase">{{ __($member['role']) }}</p>
+                        <h3 class="mt-1 font-semibold leading-snug">{{ $member['name'] }}</h3>
+                    </li>
+                @endforeach
+            </ul>
         </div>
     </section>
 
