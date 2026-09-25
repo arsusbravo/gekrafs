@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class UserSeeder extends Seeder
 {
@@ -14,8 +15,8 @@ class UserSeeder extends Seeder
 
     public function run(): void
     {
-        $this->admin('Arsus', 'info@arsus.nl', 'arsus@29');
-        $this->admin('GEKRAFS Belanda', self::AUTHOR_EMAIL, 'gekrafsnl24');
+        $this->admin('Arsus', 'info@arsus.nl', env('SEED_ADMIN_ARSUS_PASSWORD'));
+        $this->admin('GEKRAFS Belanda', self::AUTHOR_EMAIL, env('SEED_ADMIN_GEKRAFS_PASSWORD'));
 
         // Demo accounts for local development only.
         if (app()->environment('local', 'testing')) {
@@ -29,15 +30,24 @@ class UserSeeder extends Seeder
     }
 
     /**
-     * Create the admin if missing. Existing accounts keep their current password.
+     * Create the admin if missing. Existing accounts keep their password and role.
+     *
+     * Passwords never live in the code: they come from .env, or a random one is
+     * generated and shown once in the console.
      */
-    private function admin(string $name, string $email, string $password): void
+    private function admin(string $name, string $email, ?string $password): void
     {
-        $user = User::firstOrCreate(
-            ['email' => $email],
-            ['name' => $name, 'password' => $password],
-        );
+        if (User::where('email', $email)->exists()) {
+            return;
+        }
 
-        $user->forceFill(['is_admin' => true, 'email_verified_at' => $user->email_verified_at ?? now()])->save();
+        if (blank($password)) {
+            $password = Str::password(16);
+            $this->command?->warn("Created {$email} with password: {$password}  (change it after logging in)");
+        }
+
+        User::create(['name' => $name, 'email' => $email, 'password' => $password])
+            ->forceFill(['is_admin' => true, 'email_verified_at' => now()])
+            ->save();
     }
 }

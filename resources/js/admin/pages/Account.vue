@@ -64,7 +64,7 @@ async function updatePassword() {
                 <input id="current_password" v-model="form.current_password" type="password" class="form-input" autocomplete="current-password" required />
             </FormField>
 
-            <FormField id="password" label="New password" :error="errors.password" hint="At least 8 characters.">
+            <FormField id="password" label="New password" :error="errors.password" hint="At least 10 characters, with letters and numbers.">
                 <input id="password" v-model="form.password" type="password" class="form-input" autocomplete="new-password" required />
             </FormField>
 

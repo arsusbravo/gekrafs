@@ -82,7 +82,7 @@ class EventController extends Controller
             'location' => ['nullable', 'string', 'max:191'],
             'starts_at' => ['required', 'date'],
             'ends_at' => ['nullable', 'date', 'after_or_equal:starts_at'],
-            'image' => ['nullable', 'image', 'max:4096'],
+            'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,gif,webp', 'max:4096'],
             'is_published' => ['boolean'],
         ]);
 

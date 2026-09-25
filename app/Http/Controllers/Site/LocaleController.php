@@ -14,6 +14,10 @@ class LocaleController extends Controller
 
         $request->session()->put('locale', $locale);
 
-        return redirect()->back(fallback: localized_route('home', locale: $locale));
+        // url()->previous() trusts the Referer header, so only go back to pages on this site.
+        $previous = url()->previous();
+        $isSameSite = parse_url($previous, PHP_URL_HOST) === $request->getHost();
+
+        return redirect($isSameSite ? $previous : localized_route('home', locale: $locale));
     }
 }

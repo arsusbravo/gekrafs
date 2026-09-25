@@ -75,7 +75,7 @@ class PostController extends Controller
             'slug' => ['nullable', 'string', 'max:191', 'alpha_dash', Rule::unique('posts', 'slug')->ignore($post)],
             'excerpt' => ['nullable', 'string', 'max:500'],
             'body' => ['required', 'string'],
-            'image' => ['nullable', 'image', 'max:4096'],
+            'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,gif,webp', 'max:4096'],
             'published_at' => ['nullable', 'date'],
         ]);
 
