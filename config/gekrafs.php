@@ -25,6 +25,7 @@ return [
         ['name' => 'Zenadia Cornelie Janine Barthélemy', 'role' => 'Treasurer', 'photo' => 'images/boards/zb.jpg'],
         ['name' => 'Christina Ellen Nelwan', 'role' => 'Public Relations', 'photo' => 'images/boards/cn.jpg'],
         ['name' => 'Ario Susmaryono', 'role' => 'IT & Digital', 'photo' => 'images/boards/as.jpg'],
+        ['name' => 'Gino de La Fosse', 'role' => 'Media & Documentation', 'photo' => 'images/boards/gf.jpg'],
     ],
 
     'representatives' => [

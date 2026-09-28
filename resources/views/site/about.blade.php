@@ -94,7 +94,7 @@
                 <h3 class="mt-1 font-display text-4xl leading-none tracking-wide">{{ $chair['name'] }}</h3>
             </div>
 
-            <ul class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <ul class="mt-6 grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
                 @foreach ($board as $member)
                     <li class="flex flex-col items-center rounded-2xl bg-white/5 px-4 py-6 text-center ring-1 ring-white/10 backdrop-blur">
                         @if (! empty($member['photo']))

@@ -46,7 +46,7 @@ class SiteTest extends TestCase
     public function test_about_page_lists_the_dpln_board_in_each_language(): void
     {
         $this->get('/about')->assertOk()
-            ->assertSeeInOrder(['Board of DPLN GEKRAFS Netherlands', 'Chair', 'Maya W. Montolalu', 'Secretary', 'Endang den Boer-Wahyuni', 'Treasurer', 'Zenadia Cornelie Janine Barthélemy', 'Public Relations', 'Christina Ellen Nelwan', 'IT', 'Ario Susmaryono']);
+            ->assertSeeInOrder(['Board of DPLN GEKRAFS Netherlands', 'Chair', 'Maya W. Montolalu', 'Secretary', 'Endang den Boer-Wahyuni', 'Treasurer', 'Zenadia Cornelie Janine Barthélemy', 'Public Relations', 'Christina Ellen Nelwan', 'IT &amp; Digital', 'Ario Susmaryono', 'Media &amp; Documentation', 'Gino de La Fosse'], false);
 
         $this->get('/id/about')->assertSeeInOrder(['Susunan Kepengurusan DPLN GEKRAFS Belanda', 'Ketua', 'Maya W. Montolalu', 'Bendahara']);
         $this->get('/nl/about')->assertSeeInOrder(['Bestuur DPLN GEKRAFS Nederland', 'Voorzitter', 'Maya W. Montolalu', 'Penningmeester']);
