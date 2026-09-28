@@ -24,7 +24,7 @@ return [
         ['name' => 'Endang den Boer-Wahyuni', 'role' => 'Secretary', 'photo' => 'images/boards/ep.jpg'],
         ['name' => 'Zenadia Cornelie Janine Barthélemy', 'role' => 'Treasurer', 'photo' => 'images/boards/zb.jpg'],
         ['name' => 'Christina Ellen Nelwan', 'role' => 'Public Relations', 'photo' => 'images/boards/cn.jpg'],
-        ['name' => 'Ario Susmaryono', 'role' => 'IT', 'photo' => 'images/boards/as.jpg'],
+        ['name' => 'Ario Susmaryono', 'role' => 'IT & Digital', 'photo' => 'images/boards/as.jpg'],
     ],
 
     'representatives' => [
