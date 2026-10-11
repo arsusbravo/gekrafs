@@ -1,13 +1,15 @@
 @props(['post'])
 
 <a href="{{ localized_route('blog.show', $post) }}" class="group flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-gray-200 transition hover:-translate-y-1 hover:shadow-xl hover:ring-brand-200">
-    @if ($post->image_url)
-        <img src="{{ $post->image_url }}" alt="" class="aspect-[16/10] w-full object-cover">
-    @else
-        <div class="bg-pattern flex aspect-[16/10] w-full items-center justify-center">
-            <img src="{{ asset('images/logo.png') }}" alt="" class="h-16 w-16 opacity-90">
-        </div>
-    @endif
+    <div class="h-56 shrink-0 overflow-hidden">
+        @if ($post->image_url)
+            <img src="{{ $post->image_url }}" alt="" class="h-full w-full object-cover object-center">
+        @else
+            <div class="bg-pattern flex h-full w-full items-center justify-center">
+                <img src="{{ asset('images/logo.png') }}" alt="" class="h-16 w-16 opacity-90">
+            </div>
+        @endif
+    </div>
     <div class="flex flex-1 flex-col gap-3 p-6">
         <p class="text-xs font-semibold tracking-wide text-brand-600 uppercase">{{ $post->published_at->translatedFormat('j F Y') }}</p>
         <h3 class="text-lg leading-snug font-bold text-gray-900 group-hover:text-brand-700">{{ $post->title }}</h3>

@@ -63,11 +63,11 @@
     {{-- Latest events --}}
     <section class="bg-gray-50 py-20 sm:py-28">
         <div class="container-site">
-            <x-section-heading :eyebrow="__('Events')" :title="__('Upcoming events')" :link="localized_route('events.index')" :link-label="__('View all')" />
+            <x-section-heading :eyebrow="__('Events')" :title="__('Latest events')" :link="localized_route('events.index')" :link-label="__('View all')" />
             @if ($events->isEmpty())
                 <div class="rounded-2xl border-2 border-dashed border-gray-200 bg-gray-50 px-6 py-14 text-center">
                     <x-icon name="calendar" class="mx-auto h-10 w-10 text-brand-300" />
-                    <p class="mt-3 text-gray-500">{{ __('No upcoming events yet. Check back soon.') }}</p>
+                    <p class="mt-3 text-gray-500">{{ __('No events yet. Check back soon.') }}</p>
                 </div>
             @else
                 <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -96,13 +96,13 @@
     </section>
 
     {{-- Central board --}}
-    <section class="bg-pattern relative overflow-hidden py-20 text-white sm:py-24">
+    <section class="bg-pattern relative overflow-hidden pt-20 text-white sm:pt-24">
         <div class="absolute inset-0 bg-linear-to-b from-brand-900/70 to-brand-700/40"></div>
         <div class="container-site relative text-center">
             <p class="eyebrow justify-center text-accent-400">DPP GEKRAFS</p>
             <h2 class="section-title mt-2">{{ __('Central Board') }}</h2>
             <p class="mx-auto mt-3 max-w-xl text-brand-100">{{ __('The central leadership of GEKRAFS Indonesia') }}</p>
-            <img src="{{ asset('images/dpp.png') }}" alt="Dewan Pimpinan Pusat GEKRAFS" class="mx-auto mt-10 w-full max-w-5xl">
+            <img src="{{ asset('images/dpp.png') }}" alt="Dewan Pimpinan Pusat GEKRAFS" class="mx-auto mt-10 block w-full max-w-5xl">
         </div>
     </section>
 

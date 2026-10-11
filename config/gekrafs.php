@@ -42,6 +42,8 @@ return [
     ],
 
     'partners' => [
+        ['name' => 'Kementerian Ekonomi Kreatif', 'url' => 'https://ekraf.go.id/', 'logo' => 'images/ekraf.png'],
+        ['name' => 'Gekrafs Headquarter', 'url' => 'https://gekrafs.com/', 'logo' => 'images/logo.png'],
         ['name' => 'Indonesian Embassy in The Hague', 'url' => 'https://www.indonesia.nl/', 'logo' => 'images/kbri.png'],
         ['name' => 'Wonderful Indonesia', 'url' => 'https://www.indonesia.travel/', 'logo' => 'images/indonesia.png'],
     ],

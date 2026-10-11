@@ -24,6 +24,58 @@ class SiteTest extends TestCase
         $this->get('/blog/'.$post->slug)->assertOk()->assertSee('Hello World');
     }
 
+    public function test_home_shows_upcoming_events_first_then_the_latest_past_ones(): void
+    {
+        Event::factory()->create(['title' => 'Old Gala', 'starts_at' => now()->subMonths(3)]);
+        Event::factory()->create(['title' => 'Recent Seminar', 'starts_at' => now()->subMonth()]);
+        Event::factory()->create(['title' => 'Next Fest', 'starts_at' => now()->addWeek()]);
+        Event::factory()->create(['title' => 'Hidden Fest', 'starts_at' => now()->addDays(2), 'is_published' => false]);
+
+        $this->get('/')->assertOk()
+            ->assertSeeInOrder(['Next Fest', 'Recent Seminar', 'Old Gala'])
+            ->assertDontSee('Hidden Fest');
+    }
+
+    public function test_home_shows_at_most_three_events(): void
+    {
+        foreach (['Oldest', 'Older', 'Newer', 'Newest'] as $i => $title) {
+            Event::factory()->create(['title' => "{$title} Event", 'starts_at' => now()->subMonths(4 - $i)]);
+        }
+
+        $this->get('/')->assertSee(['Newest Event', 'Newer Event', 'Older Event'])->assertDontSee('Oldest Event');
+    }
+
+    public function test_only_upcoming_events_get_a_ribbon_on_the_home_page(): void
+    {
+        Event::factory()->create(['starts_at' => now()->subMonth()]);
+        $this->assertStringNotContainsString('data-ribbon="upcoming"', $this->get('/')->getContent());
+
+        Event::factory()->create(['starts_at' => now()->addWeek()]);
+        $this->assertSame(1, substr_count($this->get('/')->getContent(), 'data-ribbon="upcoming"'));
+    }
+
+    public function test_the_ribbon_label_is_translated(): void
+    {
+        Event::factory()->create(['starts_at' => now()->addWeek()]);
+
+        $this->get('/')->assertSee('>Upcoming</span>', false);
+        $this->get('/nl')->assertSee('>Aankomend</span>', false);
+        $this->get('/id')->assertSee('>Mendatang</span>', false);
+    }
+
+    public function test_events_page_has_no_ribbon_because_it_already_has_an_upcoming_section(): void
+    {
+        Event::factory()->create(['starts_at' => now()->addWeek()]);
+
+        $this->assertStringNotContainsString('data-ribbon="upcoming"', $this->get('/events')->getContent());
+    }
+
+    public function test_an_event_is_upcoming_from_the_start_of_its_day(): void
+    {
+        $this->assertTrue(Event::factory()->make(['starts_at' => now()->startOfDay()])->is_upcoming);
+        $this->assertFalse(Event::factory()->make(['starts_at' => now()->startOfDay()->subSecond()])->is_upcoming);
+    }
+
     public function test_unpublished_content_is_hidden(): void
     {
         $event = Event::factory()->create(['is_published' => false, 'starts_at' => now()->addWeek(), 'title' => 'Secret Event']);

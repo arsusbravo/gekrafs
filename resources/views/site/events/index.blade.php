@@ -13,7 +13,7 @@
             @else
                 <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
                     @foreach ($upcoming as $event)
-                        <x-event-card :event="$event" />
+                        <x-event-card :event="$event" :ribbon="false" />
                     @endforeach
                 </div>
                 <div class="mt-10">{{ $upcoming->links() }}</div>

@@ -68,8 +68,27 @@ class Event extends Model
         $query->where('is_published', true);
     }
 
+    /**
+     * Events that start today or later, soonest first.
+     */
     public function scopeUpcoming(Builder $query): void
     {
         $query->where('starts_at', '>=', now()->startOfDay())->orderBy('starts_at');
+    }
+
+    /**
+     * Events that started before today, most recent first.
+     */
+    public function scopePast(Builder $query): void
+    {
+        $query->where('starts_at', '<', now()->startOfDay())->latest('starts_at');
+    }
+
+    /**
+     * Whether the event is today or later (same rule as scopeUpcoming).
+     */
+    public function getIsUpcomingAttribute(): bool
+    {
+        return $this->starts_at->gte(now()->startOfDay());
     }
 }

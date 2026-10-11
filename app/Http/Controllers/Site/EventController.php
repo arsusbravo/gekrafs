@@ -12,7 +12,7 @@ class EventController extends Controller
     {
         return view('site.events.index', [
             'upcoming' => Event::published()->upcoming()->paginate(9),
-            'past' => Event::published()->where('starts_at', '<', now()->startOfDay())->latest('starts_at')->take(6)->get(),
+            'past' => Event::published()->past()->take(6)->get(),
         ]);
     }
 

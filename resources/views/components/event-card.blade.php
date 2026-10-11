@@ -1,11 +1,16 @@
-@props(['event'])
+@props(['event', 'ribbon' => true])
 
-<a href="{{ localized_route('events.show', $event) }}" class="group flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-gray-200 transition hover:-translate-y-1 hover:shadow-xl hover:ring-brand-200">
-    <div class="relative">
+<a href="{{ localized_route('events.show', $event) }}" class="group relative flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-gray-200 transition hover:-translate-y-1 hover:shadow-xl hover:ring-brand-200">
+    @if ($ribbon && $event->is_upcoming)
+        <div data-ribbon="upcoming" class="pointer-events-none absolute top-0 right-0 z-10 h-28 w-28 overflow-hidden" aria-hidden="true">
+            <span class="absolute top-6 -right-9 w-40 rotate-45 bg-accent-500 py-1 text-center text-xs font-bold tracking-widest text-brand-950 uppercase shadow-md">{{ __('Upcoming') }}</span>
+        </div>
+    @endif
+    <div class="relative h-56 shrink-0 overflow-hidden">
         @if ($event->image_url)
-            <img src="{{ $event->image_url }}" alt="" class="aspect-[16/10] w-full object-cover">
+            <img src="{{ $event->image_url }}" alt="" class="h-full w-full object-cover object-center">
         @else
-            <div class="bg-pattern aspect-[16/10] w-full"></div>
+            <div class="bg-pattern h-full w-full"></div>
         @endif
         <div class="absolute top-4 left-4 rounded-xl bg-white px-3 py-2 text-center shadow-md">
             <div class="font-display text-3xl leading-none text-brand-700">{{ $event->starts_at->format('d') }}</div>
